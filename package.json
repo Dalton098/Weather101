@@ -1,13 +1,14 @@
 {
-    "name": "weather101",
-    "version": "0.0.0",
-    "scripts": {
-      "ng": "ng",
-      "start": "ng serve",
-      "build": "cd frontend/ && ng build && cd ../backend/ && tsc server.ts",
-      "watch": "ng build --watch --configuration development",
-      "test": "ng test",
-      "serve:ssr:Weather101": "node dist/weather101/server/server.mjs"
-    },
-    "private": true
-  }
+  "name": "weather101",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "install" : "cd frontend/Weather101 && pnpm install && cd ../../backend/ && pnpm install",
+    "build": "cd frontend/Weather101 && ng build && cd ../../backend/ && pnpm build",
+    "watchFrontend": "cd frontend/Weather101 && ng build --watch --configuration development",
+    "watchBackend": "cd backend/ && pnpm dev",
+    "test": "ng test"
+  },
+  "private": true
+}
