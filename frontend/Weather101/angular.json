@@ -33,13 +33,19 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "**/*",
+                "input": "./node_modules/cesium/Build/Cesium",
+                "output": "./assets/cesium"
+               },
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "./node_modules/cesium/Build/Cesium/Widgets/widgets.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/cesium/Build/Cesium/Cesium.js"]
           },
           "configurations": {
             "production": {
@@ -104,5 +110,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1f144213-6765-45e9-ac34-af66465c0ced"
   }
 }
