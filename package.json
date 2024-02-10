@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "cd backend && pnpm start",
     "install" : "cd frontend/Weather101 && pnpm install && cd ../../backend/ && pnpm install",
-    "build": "cd frontend/Weather101 && ng build && cd ../../backend/ && pnpm build",
+    "build": "cd frontend/Weather101 && pnpm build && cd ../../backend/ && pnpm build",
     "watchFrontend": "cd frontend/Weather101 && pnpm watch",
     "watchBackend": "cd backend/ && pnpm dev",
     "test": "ng test"
