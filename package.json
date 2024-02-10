@@ -8,7 +8,8 @@
     "build": "cd frontend/Weather101 && pnpm build && cd ../../backend/ && pnpm build",
     "watchFrontend": "cd frontend/Weather101 && pnpm watch",
     "watchBackend": "cd backend/ && pnpm dev",
-    "test": "cd frontend/Weather101 && pnpm test"
+    "test": "cd frontend/Weather101 && pnpm test",
+    "test:coverage": "cd frontend/Weather101 && pnpm test:coverage"
   },
   "private": true,
   "devDependencies": {
