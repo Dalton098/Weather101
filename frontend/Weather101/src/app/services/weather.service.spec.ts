@@ -50,4 +50,13 @@ describe('WeatherService', () => {
     httpClient.get("/weather").subscribe(data => expect(data).toBeDefined());
     service.latLon12HourWeatherForcast(40, 75);
   });
+
+  /**
+   * Test {@link WeatherService#latLonHourlyWeatherForcast}
+   */
+    it('can get hourly data', () => {
+      httpClient.get("/weather").subscribe(data => expect(data).toBeDefined());
+      service.latLonHourlyWeatherForcast(40, 75);
+    });
+
 });
