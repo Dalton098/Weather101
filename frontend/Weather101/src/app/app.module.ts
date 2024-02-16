@@ -13,6 +13,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { HourlyComponent } from './components/hourly/hourly.component';
 import {MatListModule} from '@angular/material/list';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     MatIconModule,
     MatToolbarModule,
     MatGridListModule,
-    MatListModule
+    MatListModule,
+    MatTableModule
   ],
   providers: [
     provideAnimationsAsync()

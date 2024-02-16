@@ -1,8 +1,20 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
+import { WeatherService } from '../../services/weather.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 export interface Section {
   name: string;
   updated: Date;
+}
+
+export interface HourlyForecast {
+  humidity: number;
+  shortForecast: string;
+  startTime: Date;
+  endTime: Date;
+  temperature: number;
+  windDirection: string;
+  windSpeed: string;
 }
 
 @Component({
@@ -10,7 +22,43 @@ export interface Section {
   templateUrl: './hourly.component.html',
   styleUrl: './hourly.component.scss'
 })
-export class HourlyComponent {
+export class HourlyComponent implements AfterViewInit {
+
+  public hourlyForecasts:HourlyForecast[] = [];
+  public todaysDate:Date = new Date();
+
+  displayedColumns: string [] = ['Time', 'Temperature', 'Forecast', 'Humidity', 'Wind']
+  dataSource = new MatTableDataSource<HourlyForecast>(this.hourlyForecasts);
+
+  constructor (private weatherService: WeatherService)
+  {
+  }
+
+
+  ngAfterViewInit(): void {
+    this.weatherService.latLon12HourWeatherForcast(40, 75).subscribe(forecast => 
+      {
+        console.log(forecast);
+        for (let period of forecast.properties.periods)
+        {
+          const hourlyForecast:HourlyForecast =
+          {
+            humidity: period.humidity,
+            shortForecast: period.shortForecast,
+            startTime: new Date(period.startTime),
+            endTime: new Date(period.endTime),
+            temperature: period.temperature,
+            windDirection: period.windDirection,
+            windSpeed: period.windSpeed
+          }
+
+          this.hourlyForecasts.push(hourlyForecast);
+        }
+        this.dataSource = new MatTableDataSource<HourlyForecast>(this.hourlyForecasts);
+      });
+  }
+
+
   folders: Section[] = [
     {
       name: 'Photos',

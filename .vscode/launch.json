@@ -7,7 +7,7 @@
       "type": "chrome",
       "request": "launch",
       "webRoot": "${workspaceFolder}/frontend/Weather101",
-      "url": "http://localhost:3000/"
+      "url": "http://localhost:3000/hourly"
     },
     {
       "name": "ng test",
