@@ -1,11 +1,6 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface Section {
-  name: string;
-  updated: Date;
-}
 
 export interface HourlyForecast {
   humidity: number;
@@ -30,7 +25,7 @@ export class HourlyComponent implements AfterViewInit {
   displayedColumns: string [] = ['Time', 'Temperature', 'Forecast', 'Humidity', 'Wind']
   dataSource = new MatTableDataSource<HourlyForecast>(this.hourlyForecasts);
 
-  constructor (private weatherService: WeatherService)
+  constructor (private weatherService: WeatherService, private changeDetectorRef: ChangeDetectorRef)
   {
   }
 
@@ -38,7 +33,6 @@ export class HourlyComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.weatherService.latLonHourlyWeatherForcast(40, 75).subscribe(forecast => 
       {
-        console.log(forecast);
         for (let period of forecast.properties.periods)
         {
           const hourlyForecast:HourlyForecast =
@@ -54,35 +48,9 @@ export class HourlyComponent implements AfterViewInit {
 
           this.hourlyForecasts.push(hourlyForecast);
         }
-        // this.todaysDate.getDay();
         this.hourlyForecasts = this.hourlyForecasts.filter(forecastItem => this.todaysDate.getDay() === forecastItem.startTime.getDay() );
         this.dataSource.data = this.hourlyForecasts.sort((firstItem, secondItem) => { return firstItem.startTime.getTime() - secondItem.startTime.getTime()});
+        this.changeDetectorRef.detectChanges();
       });
   }
-
-
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    },
-  ];
-  notes: Section[] = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    },
-  ];
 }
