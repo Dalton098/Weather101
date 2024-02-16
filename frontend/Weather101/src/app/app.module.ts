@@ -12,13 +12,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { HourlyComponent } from './components/hourly/hourly.component';
 import {MatListModule} from '@angular/material/list';
-import { RouterOutlet } from '@angular/router';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CesiumDirective,
-    HourlyComponent
+    HourlyComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -28,8 +29,7 @@ import { RouterOutlet } from '@angular/router';
     MatIconModule,
     MatToolbarModule,
     MatGridListModule,
-    MatListModule,
-    RouterOutlet
+    MatListModule
   ],
   providers: [
     provideAnimationsAsync()
