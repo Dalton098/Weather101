@@ -1,10 +1,11 @@
 import { ElementRef } from '@angular/core';
 import { CesiumDirective } from './cesium.directive';
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient} from '@angular/common/http';
 import { AppComponent } from '../app.component';
 import { By } from '@angular/platform-browser';
 import { AppModule } from '../app.module';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
 
 /**
  * Create a mock element ref to use for testing
@@ -19,7 +20,7 @@ describe('CesiumDirective', () => {
       imports: [AppModule],
       declarations: [CesiumDirective],
       providers: [provideHttpClient(), {provide: ElementRef, useClass: MockElementRef}]
-    }).createComponent(AppComponent);
+    }).createComponent(DashboardComponent);
       
     fixture.detectChanges(); // initial binding
 
@@ -29,5 +30,6 @@ describe('CesiumDirective', () => {
 
   it('should create an instance', () => {
     expect(directive).toBeTruthy();
+    
   });
 });
