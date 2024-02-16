@@ -1,7 +1,7 @@
 
 <div mat-subheader>{{todaysDate.toLocaleDateString("en-US", {day: "numeric", month: "long"})}}</div>
 
-<table mat-table [dataSource]="hourlyForecasts" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <ng-container matColumnDef="Time">
     <th mat-header-cell *matHeaderCellDef> Time </th>
@@ -20,7 +20,7 @@
 
   <ng-container matColumnDef="Humidity">
     <th mat-header-cell *matHeaderCellDef> Humidity </th>
-    <td mat-cell *matCellDef="let hourlyForecast"> {{hourlyForecast.humidity}} </td>
+    <td mat-cell *matCellDef="let hourlyForecast"> {{hourlyForecast.humidity}}% </td>
   </ng-container>
 
   <ng-container matColumnDef="Wind">

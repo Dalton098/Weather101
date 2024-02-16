@@ -31,4 +31,16 @@ export class WeatherService {
   latLon12HourWeatherForcast(lat: number, lon: number) : Observable<any> {
     return this.http.get(`${this.baseWeatherUrl}/gridpoints/TOP/${lat},${lon}/forecast`);
   }
+
+  /**
+   * Get a 2.5 km radius hourly forecast for the provided latitude longitude
+   * @param lat the latitude
+   * @param lon the longitude
+   * 
+   * @returns hourly forecast data
+   */
+  latLonHourlyWeatherForcast(lat: number, lon: number) : Observable<any> {
+    return this.http.get(`${this.baseWeatherUrl}/gridpoints/TOP/${lat},${lon}/forecast/hourly`);
+  }
+
 }

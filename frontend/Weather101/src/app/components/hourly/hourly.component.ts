@@ -36,14 +36,14 @@ export class HourlyComponent implements AfterViewInit {
 
 
   ngAfterViewInit(): void {
-    this.weatherService.latLon12HourWeatherForcast(40, 75).subscribe(forecast => 
+    this.weatherService.latLonHourlyWeatherForcast(40, 75).subscribe(forecast => 
       {
         console.log(forecast);
         for (let period of forecast.properties.periods)
         {
           const hourlyForecast:HourlyForecast =
           {
-            humidity: period.humidity,
+            humidity: period.relativeHumidity.value,
             shortForecast: period.shortForecast,
             startTime: new Date(period.startTime),
             endTime: new Date(period.endTime),
@@ -54,7 +54,9 @@ export class HourlyComponent implements AfterViewInit {
 
           this.hourlyForecasts.push(hourlyForecast);
         }
-        this.dataSource = new MatTableDataSource<HourlyForecast>(this.hourlyForecasts);
+        // this.todaysDate.getDay();
+        this.hourlyForecasts = this.hourlyForecasts.filter(forecastItem => this.todaysDate.getDay() === forecastItem.startTime.getDay() );
+        this.dataSource.data = this.hourlyForecasts.sort((firstItem, secondItem) => { return firstItem.startTime.getTime() - secondItem.startTime.getTime()});
       });
   }
 
