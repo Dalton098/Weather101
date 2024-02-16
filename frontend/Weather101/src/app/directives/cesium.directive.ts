@@ -1,5 +1,6 @@
 import { Directive, OnInit, ElementRef } from '@angular/core';
 import { SceneMode, Viewer } from 'cesium';
+import { WeatherService } from '../services/weather.service';
 
 /**
  * A {@link CesiumDirective} is a directive that will initialize a cesium globe and place it inside the provided html tag
