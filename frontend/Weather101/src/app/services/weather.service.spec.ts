@@ -18,6 +18,8 @@ describe('WeatherService', () => {
   });
 
   it('can get 12 hour data', () => {
-    
+    httpClient.get("/weather").subscribe(data => expect(data).toBeDefined());
+    const req = service.latLon12HourWeatherForcast(40, 75);
+
   });
 });

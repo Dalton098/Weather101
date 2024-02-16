@@ -14,8 +14,7 @@ export class CesiumDirective implements OnInit {
    * Constructor
    * @param el The reference to the html element where the cesium element should be placed in
    */
- constructor(private el: ElementRef,
-            private weatherService: WeatherService) { }
+ constructor(private el: ElementRef) { }
 
  /**
   * Initialize the viewer
@@ -23,10 +22,6 @@ export class CesiumDirective implements OnInit {
  ngOnInit() {
   const viewer = new Viewer(this.el.nativeElement, {
     sceneMode: SceneMode.SCENE2D
-  });
-
-  this.weatherService.latLon12HourWeatherForcast(40, 75).subscribe(forecast => {
-    console.log(forecast);
   });
  }
 
