@@ -12,7 +12,7 @@ const port = process.env.PORT;
 const angularPath = (__dirname.endsWith("dist") ? '/../../' : '/../') + 'frontend/Weather101/dist/weather101/browser/';
 
 app.use('/weather', proxy('https://api.weather.gov'));
-app.use('/nasa', proxy('https://gibs.earthdata.nasa.gov'));
+app.use('/mesonet', proxy('https://mesonet.agron.iastate.edu'));
 
 app.use(express.static(__dirname + angularPath));
 app.get('*', (req, res) => {
