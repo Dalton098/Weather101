@@ -1,4 +1,4 @@
-import { ElementRef } from '@angular/core';
+import { DebugElement, ElementRef } from '@angular/core';
 import { CesiumDirective } from './cesium.directive';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideHttpClient} from '@angular/common/http';
@@ -6,6 +6,7 @@ import { AppComponent } from '../app.component';
 import { By } from '@angular/platform-browser';
 import { AppModule } from '../app.module';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
+import { WebMapServiceImageryProvider } from 'cesium';
 
 /**
  * Create a mock element ref to use for testing
@@ -13,7 +14,7 @@ import { DashboardComponent } from '../components/dashboard/dashboard.component'
 export class MockElementRef extends ElementRef {}
 
 describe('CesiumDirective', () => {
-  var directive: unknown;
+  var directive: any;
 
   beforeEach(() => {
     var fixture = TestBed.configureTestingModule({
@@ -31,5 +32,15 @@ describe('CesiumDirective', () => {
   it('should create an instance', () => {
     expect(directive).toBeTruthy();
     
+  });
+
+  it('should create the weather layer', () => {
+    const cesDirective = directive[0].injector.get(CesiumDirective) as CesiumDirective;
+    const viewer = cesDirective.getViewer;
+    const imageryLayers = viewer.imageryLayers;
+    expect(imageryLayers.length).toBe(2);
+    const weatherLayer = imageryLayers.get(1);
+    const provider = weatherLayer.imageryProvider as WebMapServiceImageryProvider;
+    expect(provider.url).toBe("/mesonet/cgi-bin/wms/nexrad/n0r.cgi");
   });
 });
