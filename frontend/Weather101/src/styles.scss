@@ -1,4 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 
+// Variables
+$primary-color: rgb(174, 195, 229);
+$secondary-color: rgb(65, 136, 242);
+$accent-color: rgb(42, 37, 254);
+$highlight-color: rgb(65,95,141);
+$primary-font-color: white;
+$secondary-font-color: black;
+
+// Fonts
+.heebo {
+    font-family: "Heebo", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 1;
+    font-style: normal;
+}
+  
+.genos {
+    font-family: "Genos", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 1;
+    font-style: normal;
+}
+
+.fira-code {
+    font-family: "Fira Code", monospace !important;
+    font-optical-sizing: auto;
+    font-weight: 1;
+    font-style: normal;
+}  
+
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body { 
+    margin: 0; 
+    font-family: "Heebo", sans-serif !important;
+    font-optical-sizing: auto;
+    font-weight: 1;
+    font-style: normal;
+}
