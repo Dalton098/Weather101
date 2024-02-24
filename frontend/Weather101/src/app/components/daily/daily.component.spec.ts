@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HourlyComponent } from './hourly.component';
 import { WeatherService } from '../../services/weather.service';
 import { of } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import * as theSauce from "./testData.json";
+import { DailyComponent } from './daily.component';
 
 describe('HourlyComponent', () => {
 
@@ -16,7 +16,7 @@ describe('HourlyComponent', () => {
   /**
    * The component being tested
    */
-  let fixture: ComponentFixture<HourlyComponent>;
+  let fixture: ComponentFixture<DailyComponent>;
 
   /**
    * Setup for the test
@@ -25,7 +25,7 @@ describe('HourlyComponent', () => {
     let weatherServiceSpy = jasmine.createSpyObj("WeatherService", ["latLonHourlyWeatherForcast"]);
     weatherServiceSpy.latLonHourlyWeatherForcast.and.returnValue(of(theSauce));
     await TestBed.configureTestingModule({
-      declarations: [HourlyComponent],
+      declarations: [DailyComponent],
       imports: [
         MatTableModule
       ],
@@ -33,7 +33,7 @@ describe('HourlyComponent', () => {
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(HourlyComponent);
+    fixture = TestBed.createComponent(DailyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
