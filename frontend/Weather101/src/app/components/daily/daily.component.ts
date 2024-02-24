@@ -140,7 +140,7 @@ export class DailyComponent implements AfterViewInit {
       },
       relativeHumidity: {
         unitCode: periods[0].relativeHumidity.unitCode,
-        value: periods.map(period => period.relativeHumidity.value).reduce((a, b) => a + b) / periods.length
+        value: Math.round(periods.map(period => period.relativeHumidity.value).reduce((a, b) => a + b) / periods.length)
       },
       windSpeed: periods.map(period => period.windSpeed).reduce((a, b) => a + b) / periods.length,
       windDirection: Array.from(new Set(periods.map(period => period.windDirection))).join('/') as any,
