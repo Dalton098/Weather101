@@ -5,6 +5,13 @@ import { of } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import * as theSauce from "./testData.json";
 import { DailyComponent } from './daily.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../../app-routing.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
 
 describe('HourlyComponent', () => {
 
@@ -27,7 +34,13 @@ describe('HourlyComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [DailyComponent],
       imports: [
-        MatTableModule
+        MatToolbarModule,
+        MatTableModule,
+        MatToolbarModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatDividerModule,
       ],
       providers: [{provide: WeatherService, useValue: weatherServiceSpy}]
     })
