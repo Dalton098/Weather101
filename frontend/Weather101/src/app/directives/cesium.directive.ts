@@ -45,4 +45,6 @@ export class CesiumDirective implements OnInit {
     }));
     this.viewer.imageryLayers.add(layer);
   }
+
+  get getViewer() { return this.viewer; }
 }
