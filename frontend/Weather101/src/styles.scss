@@ -1,4 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+@include mat.core();
+
+$indigo-palette: (
+ 50: #e0f4fd,
+ 100: #b2e3fb,
+ 200: #7fd0f7,
+ 300: #4dbef3,
+ 400: #27b0f1,
+ 500: #02a2ee,
+ 600: #0494df,
+ 700: #0482cb,
+ 800: #0471b7,
+ 900: #035195,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white
+ )
+);
+
+$my-primary: mat.define-palette($indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ ),
+ density: 0,
+));
+
+@function mat-set-background($theme, $backgroundColor) {
+    $palette-color : map-get($theme, color);
+    $background: map-get($palette-color, background);
+    $background: map_merge($background, (background: $backgroundColor));
+    $background: map_merge($background, (card: $backgroundColor));
+    $background: map_merge($background, (raised-button: $backgroundColor));
+    $palette-color: map_merge($palette-color, (background: $background));
+    @return map_merge($theme, (color: $palette-color));
+}
+
+$my-theme: mat-set-background($my-theme, #27b0f1);
+
+@include mat.all-component-themes($my-theme);
