@@ -30,49 +30,19 @@ export class CesiumDirective implements OnInit {
   * Initialize the viewer
   */
  ngOnInit() {
-  this.viewer = new Viewer(this.el.nativeElement, {
-    sceneMode: SceneMode.SCENE2D
-  });
+    this.viewer = new Viewer(this.el.nativeElement, {
+      sceneMode: SceneMode.SCENE2D
+    });
 
-  this.addAdditionalLayerOption(
-    "United States Weather Radar",
-    new WebMapServiceImageryProvider({
-      url:
-        "https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi?",
+    const layer = new ImageryLayer(new WebMapServiceImageryProvider({
+      url: "https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi?",
       layers: "nexrad-n0r",
       credit: "Radar data courtesy Iowa Environmental Mesonet",
       parameters: {
         transparent: "true",
         format: "image/png",
-      },
-    })
-  );
- }
-
- /**
-  * Utility function to add an additional imagery layer to the viewer
-  * @param name The name of the imagery provider
-  * @param imageryProviderPromise The {@link ImageryProvider}
-  * @param alpha value controling the alpha of the layer
-  * @param show 
-  */
- private async addAdditionalLayerOption(name: string,
-                                        imageryProviderPromise: ImageryProvider,
-                                        alpha? : number,
-                                        show?: boolean) {
-    let imageryLayers = this.viewer.imageryLayers;
-    try {
-      const imageryProvider = await Promise.resolve(
-        imageryProviderPromise
-      );
-      const layer = new ImageryLayer(imageryProvider);
-      layer.alpha = defaultValue(alpha, 0.5);
-      layer.show = defaultValue(show, true);
-      imageryLayers.add(layer);
-    } catch (error) {
-      console.error(
-        `There was an error while creating ${name}. ${error}`
-      );
-    }
+      }
+    }));
+    this.viewer.imageryLayers.add(layer);
   }
 }
