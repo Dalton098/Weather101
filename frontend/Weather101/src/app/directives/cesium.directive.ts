@@ -35,7 +35,7 @@ export class CesiumDirective implements OnInit {
     });
 
     const layer = new ImageryLayer(new WebMapServiceImageryProvider({
-      url: "https://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi?",
+      url: "/mesonet/cgi-bin/wms/nexrad/n0r.cgi?",
       layers: "nexrad-n0r",
       credit: "Radar data courtesy Iowa Environmental Mesonet",
       parameters: {
