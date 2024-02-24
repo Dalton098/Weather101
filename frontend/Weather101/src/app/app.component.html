@@ -16,7 +16,7 @@
         <mat-icon class="right-selection-item">menu</mat-icon>
     </mat-toolbar-row>
     <mat-toolbar-row class="title-selection fira-code">
-        <button mat-button id="title-today" class="title-selection-item">Today</button>
+        <button mat-button id="title-today" [routerLink]="['/daily']" class="title-selection-item">Today</button>
         <button mat-button id="title-hourly" [routerLink]="['/hourly']" class="title-selection-item">Hourly</button>
         <button mat-button id="title-weekly" class="title-selection-item">Weekly</button>
         <button mat-button id="title-monthly" class="title-selection-item">Monthly</button>

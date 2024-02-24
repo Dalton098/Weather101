@@ -11,7 +11,7 @@ describe('HourlyComponent', () => {
   /**
    * The hourlyComponent
    */
-  let component: HourlyComponent;
+  let component: DailyComponent;
 
   /**
    * The component being tested

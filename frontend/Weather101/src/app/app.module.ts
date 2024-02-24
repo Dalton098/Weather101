@@ -19,13 +19,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { DailyComponent } from './components/daily/daily.component';
+import {MatCardModule} from '@angular/material/card'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     CesiumDirective,
     HourlyComponent,
-    DashboardComponent
+    DashboardComponent,
+    DailyComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CommonModule,
     FormsModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync()
