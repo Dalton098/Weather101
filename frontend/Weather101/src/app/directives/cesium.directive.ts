@@ -1,5 +1,11 @@
 import { Directive, OnInit, ElementRef } from '@angular/core';
-import { SceneMode, Viewer } from 'cesium';
+import { ImageryLayer, 
+         ImageryProvider,
+         SceneMode,
+         Viewer,
+         WebMapServiceImageryProvider,
+         defaultValue } from 'cesium';
+import { interval } from 'rxjs';
 
 /**
  * A {@link CesiumDirective} is a directive that will initialize a cesium globe and place it inside the provided html tag
@@ -8,6 +14,11 @@ import { SceneMode, Viewer } from 'cesium';
  selector: '[appCesium]'
 })
 export class CesiumDirective implements OnInit {
+
+  /**
+   * The {@link Viewer}
+   */
+  private viewer: Viewer;
 
   /**
    * Constructor
@@ -19,9 +30,19 @@ export class CesiumDirective implements OnInit {
   * Initialize the viewer
   */
  ngOnInit() {
-  const viewer = new Viewer(this.el.nativeElement, {
-    sceneMode: SceneMode.SCENE2D
-  });
- }
+    this.viewer = new Viewer(this.el.nativeElement, {
+      sceneMode: SceneMode.SCENE2D
+    });
 
+    const layer = new ImageryLayer(new WebMapServiceImageryProvider({
+      url: "/mesonet/cgi-bin/wms/nexrad/n0r.cgi?",
+      layers: "nexrad-n0r",
+      credit: "Radar data courtesy Iowa Environmental Mesonet",
+      parameters: {
+        transparent: "true",
+        format: "image/png",
+      }
+    }));
+    this.viewer.imageryLayers.add(layer);
+  }
 }
