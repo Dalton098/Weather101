@@ -1,0 +1,59 @@
+
+
+@if(afternoonWeatherAverage) {
+  <div class="daily-weather-wrapper">
+    <div class ="daily-weather-container">
+      <mat-card id="daily-overall-weather">
+        <mat-card-header class="daily-overall-header">
+          <span id="location">{{ location }}</span> 
+        </mat-card-header>
+        <div class="daily-card-body">
+          <div class="daily-card-left">
+            <div class="temperature">
+              {{ averageWeather.temperature }}°
+            </div>
+            <div class="forecast">
+              {{ averageWeather.shortForecast }}
+            </div>
+            <div class="day-night">
+              Day {{ dayAverage }}° - Night {{ nightAverage }}°
+            </div>
+          </div>
+          <div class="daily-card-right" >TODO ICON</div>
+        </div>
+      </mat-card>
+      <mat-card id="daily-quarterly-weather">
+        <div class="quarterly-title">Today's Forecast for {{ location }}</div>
+        
+        <div class="quarterly-card-body">
+          <div class="quarterly-section">
+            <div class="quarterly-name">Morning</div>
+            <div class="quarterly-icon" > TODO ICON  {{ morningWeatherAverage.shortForecast }} </div>
+            <div class="quarterly-humidity" > {{ morningWeatherAverage.relativeHumidity.value }}% </div>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+
+          <div class="quarterly-section">
+            <div class="quarterly-name">Afternoon</div>
+            <div class="quarterly-icon" > TODO ICON  {{afternoonWeatherAverage.shortForecast }} </div>
+            <div class="quarterly-humidity" > {{ afternoonWeatherAverage.relativeHumidity.value }}% </div>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+
+          <div class="quarterly-section">
+            <div class="quarterly-name">Evening</div>
+            <div class="quarterly-icon" > TODO ICON  {{eveningWeatherAverage.shortForecast }} </div>
+            <div class="quarterly-humidity" > {{ eveningWeatherAverage.relativeHumidity.value }}% </div>
+          </div>
+          <mat-divider [vertical]="true"></mat-divider>
+
+          <div class="quarterly-section">
+            <div class="quarterly-name">Overnight</div>
+            <div class="quarterly-icon" > TODO ICON for {{overnightWeatherAverage.shortForecast}}% </div>
+            <div class="quarterly-humidity" > {{ overnightWeatherAverage.relativeHumidity.value }}% </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+}

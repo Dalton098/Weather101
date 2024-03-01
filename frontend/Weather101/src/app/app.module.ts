@@ -14,13 +14,21 @@ import { HourlyComponent } from './components/hourly/hourly.component';
 import {MatListModule} from '@angular/material/list';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import {MatTableModule} from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { DailyComponent } from './components/daily/daily.component';
+import {MatCardModule} from '@angular/material/card'; 
 
 @NgModule({
   declarations: [
     AppComponent,
     CesiumDirective,
     HourlyComponent,
-    DashboardComponent
+    DashboardComponent,
+    DailyComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +39,14 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatGridListModule,
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatToolbarModule,
+    MatButtonModule,
+    CommonModule,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync()
