@@ -4,22 +4,16 @@
             <img class="title-image" src="assets/logo.svg"/>
             <span class="title-route genos">{{ title }}</span>
         </div>
-        <mat-form-field class="center-selection-item search-form">
-            <mat-label>Search (Zip/Location)</mat-label>
-            <input matInput id='title-search-bar' type="text" [(ngModel)]="searchBarValue">
-            @if (searchBarValue) {
-                <button matSuffix mat-icon-button aria-label="Clear" (click)="searchBarValue=''">
-                <mat-icon>close</mat-icon>
-                </button>
-            }
-            </mat-form-field>
+        <div class="search-form">
+            <input type="text" class="round" placeholder="(Zip/Location)">
+        </div>
         <mat-icon class="right-selection-item">menu</mat-icon>
     </mat-toolbar-row>
-    <mat-toolbar-row class="title-selection fira-code">
-        <button mat-button id="title-today" [routerLink]="['/daily']" class="title-selection-item">Today</button>
-        <button mat-button id="title-hourly" [routerLink]="['/hourly']" class="title-selection-item">Hourly</button>
-        <button mat-button id="title-weekly" class="title-selection-item">Weekly</button>
-        <button mat-button id="title-monthly" class="title-selection-item">Monthly</button>
+    <mat-toolbar-row class="title-selection fira-code title-coloring">
+        <button mat-button id="title-today" [routerLink]="['/daily']" [ngClass]="{'selected-title': currentRoute === 'daily'}"  (click)='setCurrentRoute("daily")'  class="title-selection-item">Today</button>
+        <button mat-button id="title-hourly" [routerLink]="['/hourly']" [ngClass]="{'selected-title': currentRoute === 'hourly'}" (click)='setCurrentRoute("hourly")' class="title-selection-item">Hourly</button>
+        <button mat-button id="title-weekly" [ngClass]="{'selected-title': currentRoute === 'weekly'}" (click)='setCurrentRoute("weekly")' class="title-selection-item">Weekly</button>
+        <button mat-button id="title-monthly" [ngClass]="{'selected-title': currentRoute === 'monthly'}" (click)='setCurrentRoute("monthly")'class="title-selection-item">Monthly</button>
     </mat-toolbar-row>
 </mat-toolbar>
 

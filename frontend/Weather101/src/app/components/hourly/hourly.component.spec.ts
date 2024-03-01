@@ -5,6 +5,7 @@ import { WeatherService } from '../../services/weather.service';
 import { of } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import * as theSauce from "./testData.json";
+import { MatCardModule } from '@angular/material/card';
 
 describe('HourlyComponent', () => {
 
@@ -27,7 +28,8 @@ describe('HourlyComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [HourlyComponent],
       imports: [
-        MatTableModule
+        MatTableModule,
+        MatCardModule
       ],
       providers: [{provide: WeatherService, useValue: weatherServiceSpy}]
     })

@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Weather 101';
-
+  currentRoute = "";
   searchBarValue = "";
+
+  setCurrentRoute(route: string) {
+    this.currentRoute = route;
+  }
+
 }

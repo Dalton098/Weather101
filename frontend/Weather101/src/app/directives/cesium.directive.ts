@@ -1,6 +1,7 @@
 import { Directive, OnInit, ElementRef } from '@angular/core';
 import { ImageryLayer, 
          ImageryProvider,
+         IonImageryProvider,
          SceneMode,
          Viewer,
          WebMapServiceImageryProvider,
@@ -31,7 +32,10 @@ export class CesiumDirective implements OnInit {
   */
  ngOnInit() {
     this.viewer = new Viewer(this.el.nativeElement, {
-      sceneMode: SceneMode.SCENE2D
+      sceneMode: SceneMode.SCENE2D,
+      baseLayerPicker: false,
+      sceneModePicker: false,
+      geocoder: false
     });
 
     const layer = new ImageryLayer(new WebMapServiceImageryProvider({
@@ -43,6 +47,10 @@ export class CesiumDirective implements OnInit {
         format: "image/png",
       }
     }));
+
+    const imageryLayer = ImageryLayer.fromProviderAsync(IonImageryProvider.fromAssetId(4), {});
+    this.viewer.scene.imageryLayers.add(imageryLayer);
+
     this.viewer.imageryLayers.add(layer);
   }
 

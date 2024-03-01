@@ -1,0 +1,32 @@
+@import "../../../styles.scss";
+
+::ng-deep .humidity {
+  color: $accent-color
+}
+
+.hourly-table {
+  width: 70%;
+  border-radius: 20px;
+}
+
+.hourly-wrapper {
+  display:flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+.hourly-title {
+  font-family: "Heebo", sans-serif !important;
+  font-size: xx-large;
+  font-weight: 600;
+}
+
+.date-title {
+  font-family: "Heebo", sans-serif !important;
+  font-size: large;
+  font-weight: 500;
+}
+
+.table-content {
+  box-shadow: none;
+}

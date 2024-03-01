@@ -93,7 +93,11 @@
     border: 1px;
     height: 100%;
     width: 70%;
+    font-size: 107pt;
+    margin-right: 95px;
+    color: black;
 }
+
 .quarterly-card-body {
     display: flex;
     justify-content: center;
@@ -104,4 +108,31 @@
     display: inline-grid;
     justify-content: center;
     width: 24%;
+    padding-top: 15px;
+}
+
+.quarterly-icon {
+    display: flex;
+    justify-content: center;
+}
+
+.quarterly-icon-mat {
+    padding-top: 15px;
+    font-size: 50px;
+}
+
+.quarterly-name {
+    font-size: 30px;
+}
+
+.quarterly-humidity {
+    display: flex;
+    padding-top: 10px;
+    justify-self: center;
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+
+.humidity {
+    color: $accent-color;
 }

@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { MatTableDataSource } from '@angular/material/table';
+import { getTranslation } from '../../icon-mapping';
 
 export interface DailyForecast {
   number:number;
@@ -76,15 +77,15 @@ export class DailyComponent implements AfterViewInit {
 
         this.dayAverage = Math.round((this.morningWeatherAverage.temperature + this.afternoonWeatherAverage.temperature) / 2);
         this.nightAverage = Math.round((this.eveningWeatherAverage.temperature + this.overnightWeatherAverage.temperature) / 2);
-
+        this.averageWeather.icon = this.morningWeatherAverage.icon;
         this.changeDetectorRef.detectChanges();
       });
   }
 
   private periodToDailyForecast(period: any) : DailyForecast {
-    let windspeed = period.windSpeed || null;
+    let windspeed = period.windSpeed;
     if (windspeed) {
-      windspeed = windspeed.split(' ')[0] || '0';
+      windspeed = windspeed.split(' ')[0];
       windspeed = parseInt(windspeed);
     }
     return {
@@ -144,7 +145,7 @@ export class DailyComponent implements AfterViewInit {
       },
       windSpeed: periods.map(period => period.windSpeed).reduce((a, b) => a + b) / periods.length,
       windDirection: Array.from(new Set(periods.map(period => period.windDirection))).join('/') as any,
-      icon: periods[periods.length - 1].icon,
+      icon: getTranslation(winningForecast),
     }
   }
 }

@@ -38,8 +38,8 @@ describe('CesiumDirective', () => {
     const cesDirective = directive[0].injector.get(CesiumDirective) as CesiumDirective;
     const viewer = cesDirective.getViewer;
     const imageryLayers = viewer.imageryLayers;
-    expect(imageryLayers.length).toBe(2);
-    const weatherLayer = imageryLayers.get(1);
+    expect(imageryLayers.length).toBe(3);
+    const weatherLayer = imageryLayers.get(2);
     const provider = weatherLayer.imageryProvider as WebMapServiceImageryProvider;
     expect(provider.url).toBe("/mesonet/cgi-bin/wms/nexrad/n0r.cgi");
   });
