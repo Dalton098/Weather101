@@ -1,7 +1,8 @@
 
 const translationList : {[key: string]: string} = {
   "Sunny" : "sunny",
-  "Clear" : "sunny",
+  "Clear" : "clear_night",
+  "Mostly Clear" : "partly_cloudy_night",
   "Partly Cloudy" : "partly_cloudy_day",
   "Mostly Cloudy" : "partly_cloudy_day",
   "Cloudy" : "cloud",
