@@ -16,11 +16,17 @@
 }
 
 .hourly-title {
+  font-family: "Heebo", sans-serif !important;
   font-size: xx-large;
   font-weight: 600;
 }
 
 .date-title {
+  font-family: "Heebo", sans-serif !important;
   font-size: large;
   font-weight: 500;
+}
+
+.table-content {
+  box-shadow: none;
 }

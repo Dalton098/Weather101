@@ -3,12 +3,12 @@
 <div class="hourly-wrapper">
   <mat-card class="hourly-table">
     <mat-card-header>
-      <mat-card-title class="hourly-title">Hourly Forecast</mat-card-title>
+      <mat-card-title class="hourly-title">Hourly Forecast - Malvern, PA</mat-card-title>
       <mat-card-subtitle class="date-title">{{todaysDate.toLocaleDateString("en-US", {day: "numeric", month: "long"})}}</mat-card-subtitle>
     </mat-card-header>
 
     <mat-card-content>
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" class="table-content">
 
         <ng-container matColumnDef="Time">
           <th mat-header-cell *matHeaderCellDef> Time </th>
