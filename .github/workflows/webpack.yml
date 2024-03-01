@@ -25,6 +25,7 @@ jobs:
         npm install -g pnpm
         pnpm install
         pnpm build
+        pnpm test:ci
   dockerize:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
