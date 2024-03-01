@@ -1,1 +1,26 @@
+<mat-toolbar class="title-bar">
+    <mat-toolbar-row class="top-title-selection">
+        <div class="left-selection-item" [routerLink]="['/dashboard']">
+            <img class="title-image" src="assets/logo.svg"/>
+            <span class="title-route genos">{{ title }}</span>
+        </div>
+        <mat-form-field class="center-selection-item search-form">
+            <mat-label>Search (Zip/Location)</mat-label>
+            <input matInput id='title-search-bar' type="text" [(ngModel)]="searchBarValue">
+            @if (searchBarValue) {
+                <button matSuffix mat-icon-button aria-label="Clear" (click)="searchBarValue=''">
+                <mat-icon>close</mat-icon>
+                </button>
+            }
+            </mat-form-field>
+        <mat-icon class="right-selection-item">menu</mat-icon>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="title-selection fira-code">
+        <button mat-button id="title-today" [routerLink]="['/daily']" class="title-selection-item">Today</button>
+        <button mat-button id="title-hourly" [routerLink]="['/hourly']" class="title-selection-item">Hourly</button>
+        <button mat-button id="title-weekly" class="title-selection-item">Weekly</button>
+        <button mat-button id="title-monthly" class="title-selection-item">Monthly</button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
 <router-outlet></router-outlet>

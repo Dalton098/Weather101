@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Weather101';
+  title = 'Weather 101';
+
+  searchBarValue = "";
 }
