@@ -6,8 +6,9 @@
     "start": "./node_modules/.bin/ng serve",
     "build": "./node_modules/.bin/ng build",
     "watch": "./node_modules/.bin/ng build --watch --configuration development",
-    "test": "ng test",
-    "test:coverage": "ng test --no-watch --code-coverage"
+    "test": "./node_modules/.bin/ng test",
+    "test:ci": "./node_modules/.bin/ng test --no-watch  --browsers ChromeHeadlessCI --progress false",
+    "test:coverage": "./node_modules/.bin/ng test --no-watch --code-coverage"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "^17.1.0",
     "@angular/platform-browser-dynamic": "^17.1.0",
     "@angular/router": "^17.1.0",
+    "@material/theme": "^14.0.0",
     "@types/cesium": "^1.70.0",
     "cesium": "^1.114.0",
     "rxjs": "~7.8.0",

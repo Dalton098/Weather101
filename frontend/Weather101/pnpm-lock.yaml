@@ -35,6 +35,9 @@ dependencies:
   '@angular/router':
     specifier: ^17.1.0
     version: 17.1.2(@angular/common@17.1.2)(@angular/core@17.1.2)(@angular/platform-browser@17.1.2)(rxjs@7.8.1)
+  '@material/theme':
+    specifier: ^14.0.0
+    version: 14.0.0
   '@types/cesium':
     specifier: ^1.70.0
     version: 1.70.0
@@ -2354,6 +2357,12 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@material/feature-targeting@14.0.0:
+    resolution: {integrity: sha512-a5WGgHEq5lJeeNL5yevtgoZjBjXWy6+klfVWQEh8oyix/rMJygGgO7gEc52uv8fB8uAIoYEB3iBMOv8jRq8FeA==}
+    dependencies:
+      tslib: 2.6.2
+    dev: false
+
   /@material/feature-targeting@15.0.0-canary.7f224ddd4.0:
     resolution: {integrity: sha512-SAjtxYh6YlKZriU83diDEQ7jNSP2MnxKsER0TvFeyG1vX/DWsUyYDOIJTOEa9K1N+fgJEBkNK8hY55QhQaspew==}
     dependencies:
@@ -2717,6 +2726,13 @@ packages:
       '@material/theme': 15.0.0-canary.7f224ddd4.0
       '@material/tokens': 15.0.0-canary.7f224ddd4.0
       '@material/typography': 15.0.0-canary.7f224ddd4.0
+      tslib: 2.6.2
+    dev: false
+
+  /@material/theme@14.0.0:
+    resolution: {integrity: sha512-6/SENWNIFuXzeHMPHrYwbsXKgkvCtWuzzQ3cUu4UEt3KcQ5YpViazIM6h8ByYKZP8A9d8QpkJ0WGX5btGDcVoA==}
+    dependencies:
+      '@material/feature-targeting': 14.0.0
       tslib: 2.6.2
     dev: false
 

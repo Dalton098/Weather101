@@ -9,10 +9,12 @@
     "watchFrontend": "cd frontend/Weather101 && pnpm watch",
     "watchBackend": "cd backend/ && pnpm dev",
     "test": "cd frontend/Weather101 && pnpm test",
+    "test:ci": "cd frontend/Weather101 && pnpm test:ci",
     "test:coverage": "cd frontend/Weather101 && pnpm test:coverage"
   },
   "private": true,
   "devDependencies": {
-    "karma-phantomjs-launcher": "^1.0.4"
+    "karma-phantomjs-launcher": "^1.0.4",
+    "puppeteer": "^22.3.0"
   }
 }
