@@ -62,6 +62,14 @@ html, body, div[appCesium] {
     justify-content: right;
 }
 
+.title-coloring {
+  background-color: $secondary-color;
+}
+
+.selected-title {
+    background-color: $highlight-color
+}
+
 // .title-bar {
 //   color: lightblue;
 // }
