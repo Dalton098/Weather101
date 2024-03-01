@@ -34,7 +34,6 @@ export class CesiumDirective implements OnInit {
     this.viewer = new Viewer(this.el.nativeElement, {
       sceneMode: SceneMode.SCENE2D,
       baseLayerPicker: false,
-      sceneModePicker: false,
       geocoder: false
     });
 
