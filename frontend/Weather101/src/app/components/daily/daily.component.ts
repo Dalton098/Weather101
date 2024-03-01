@@ -77,19 +77,15 @@ export class DailyComponent implements AfterViewInit {
 
         this.dayAverage = Math.round((this.morningWeatherAverage.temperature + this.afternoonWeatherAverage.temperature) / 2);
         this.nightAverage = Math.round((this.eveningWeatherAverage.temperature + this.overnightWeatherAverage.temperature) / 2);
-        if (new Date().getUTCHours() > 17) {
-          this.averageWeather.icon = this.overnightWeatherAverage.icon;
-        } else {
-          this.averageWeather.icon = this.morningWeatherAverage.icon;
-        }
+        this.averageWeather.icon = this.morningWeatherAverage.icon;
         this.changeDetectorRef.detectChanges();
       });
   }
 
   private periodToDailyForecast(period: any) : DailyForecast {
-    let windspeed = period.windSpeed || null;
+    let windspeed = period.windSpeed;
     if (windspeed) {
-      windspeed = windspeed.split(' ')[0] || '0';
+      windspeed = windspeed.split(' ')[0];
       windspeed = parseInt(windspeed);
     }
     return {
