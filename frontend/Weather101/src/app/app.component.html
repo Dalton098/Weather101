@@ -4,15 +4,9 @@
             <img class="title-image" src="assets/logo.svg"/>
             <span class="title-route genos">{{ title }}</span>
         </div>
-        <mat-form-field class="center-selection-item search-form">
-            <mat-label>Search (Zip/Location)</mat-label>
-            <input matInput id='title-search-bar' type="text" [(ngModel)]="searchBarValue">
-            @if (searchBarValue) {
-                <button matSuffix mat-icon-button aria-label="Clear" (click)="searchBarValue=''">
-                <mat-icon>close</mat-icon>
-                </button>
-            }
-            </mat-form-field>
+        <div class="search-form">
+            <input type="text" class="round" placeholder="(Zip/Location)">
+        </div>
         <mat-icon class="right-selection-item">menu</mat-icon>
     </mat-toolbar-row>
     <mat-toolbar-row class="title-selection fira-code">
