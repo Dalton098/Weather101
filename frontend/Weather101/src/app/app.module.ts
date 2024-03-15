@@ -20,7 +20,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DailyComponent } from './components/daily/daily.component';
-import {MatCardModule} from '@angular/material/card'; 
+import {MatCardModule} from '@angular/material/card';
+import { WeeklyComponent } from './components/weekly/weekly.component'; 
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatCardModule} from '@angular/material/card';
     CesiumDirective,
     HourlyComponent,
     DashboardComponent,
-    DailyComponent
+    DailyComponent,
+    WeeklyComponent
   ],
   imports: [
     BrowserModule,

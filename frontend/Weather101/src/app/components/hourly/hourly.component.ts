@@ -2,17 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { getTranslation } from '../../icon-mapping';
-
-export interface HourlyForecast {
-  humidity: number;
-  forecastIcon: string;
-  shortForecast: string;
-  startTime: Date;
-  endTime: Date;
-  temperature: number;
-  windDirection: string;
-  windSpeed: string;
-}
+import { DailyForecast } from '../../common/Forecast';
 
 @Component({
   selector: 'app-hourly',
@@ -21,11 +11,11 @@ export interface HourlyForecast {
 })
 export class HourlyComponent implements AfterViewInit {
 
-  public hourlyForecasts:HourlyForecast[] = [];
+  public hourlyForecasts:DailyForecast[] = [];
   public todaysDate:Date = new Date();
 
   displayedColumns: string [] = ['Time', 'Temperature', 'Forecast', 'Humidity', 'Wind']
-  dataSource = new MatTableDataSource<HourlyForecast>(this.hourlyForecasts);
+  dataSource = new MatTableDataSource<DailyForecast>(this.hourlyForecasts);
 
   constructor (private weatherService: WeatherService, private changeDetectorRef: ChangeDetectorRef)
   {
@@ -37,10 +27,10 @@ export class HourlyComponent implements AfterViewInit {
       {
         for (let period of forecast.properties.periods)
         {
-          const hourlyForecast:HourlyForecast =
+          const hourlyForecast:DailyForecast =
           {
             humidity: period.relativeHumidity.value,
-            forecastIcon: getTranslation(period.shortForecast),
+            icon: getTranslation(period.shortForecast),
             shortForecast: period.shortForecast,
             startTime: new Date(period.startTime),
             endTime: new Date(period.endTime),
