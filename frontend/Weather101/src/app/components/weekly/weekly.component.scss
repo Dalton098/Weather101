@@ -10,6 +10,8 @@ mat-card {
 
 ::ng-deep .mat-mdc-card-header-text {
   width: 100%;
+  margin-top: 13px;
+  margin-left: 5px;
 }
 
 .today-header {
@@ -19,6 +21,10 @@ mat-card {
   padding: 0px !important;
   height: 64px;
   font-size: xx-large;
+}
+
+.today-wrapper {
+  color: white !important;
 }
 
 #location {

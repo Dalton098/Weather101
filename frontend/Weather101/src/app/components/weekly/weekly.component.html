@@ -3,22 +3,24 @@
       <mat-card-header>
         <mat-card-title class="weekly-title">Weekly Forecast - Malvern, PA</mat-card-title>
         <mat-card-subtitle class="date-title">
-            <mat-card id="today-card">
-                <mat-card-header class="today-header">
-                    <mat-card-title class="weekly-title">{{ todaysForecast ? todaysForecast.day : "" }}</mat-card-title>
-                </mat-card-header>
-                <div class="today-card-body">
-                  <div>
-                    <div class="temperature">
-                      {{ todaysForecast ? todaysForecast.temperature : 0}}°
+            <div class="today-wrapper">
+                <mat-card id="today-card">
+                    <mat-card-header class="today-header">
+                        <mat-card-title class="weekly-title">{{ todaysForecast ? todaysForecast.day : "" }}</mat-card-title>
+                    </mat-card-header>
+                    <div class="today-card-body">
+                      <div>
+                        <div class="temperature">
+                          {{ todaysForecast ? todaysForecast.temperature : 0}}°
+                        </div>
+                        <div class="forecast">
+                          {{ todaysForecast ? todaysForecast.shortForecast: "" }}
+                        </div>
+                      </div>
+                      <span class="today-card-right material-symbols-outlined">{{ todaysForecast ? todaysForecast.icon : "" }}</span>
                     </div>
-                    <div class="forecast">
-                      {{ todaysForecast ? todaysForecast.shortForecast: "" }}
-                    </div>
-                  </div>
-                  <span class="today-card-right material-symbols-outlined">{{ todaysForecast ? todaysForecast.icon : "" }}</span>
-                </div>
-              </mat-card>
+                  </mat-card>
+            </div>
         </mat-card-subtitle>
       </mat-card-header>
   
