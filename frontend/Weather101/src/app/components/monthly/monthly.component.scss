@@ -16,8 +16,18 @@
     width: 95%;
 }
 
-.calendar-icon {
+::ng-deep .calendar-icon {
     margin-top: 35px;
+    display:flex;
+    justify-content:center;
+    font-size: 30pt;
+    margin-left: 20px;
+}
+::ng-deep .calendar-text {
+    display:flex;
+    justify-content:center;
+    font-size: 12pt;
+    margin-left: 2px;
 }
 
 .temperature {
@@ -105,10 +115,11 @@
     color: black;
 }
 
-.quarterly-card-body {
+.monthly-card-body {
     display: flex;
     justify-content: center;
     width: 100%;
+    padding-bottom: 20px
 }
 
 .quarterly-section {
