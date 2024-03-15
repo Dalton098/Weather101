@@ -29,28 +29,28 @@
           <div class="quarterly-section">
             <div class="quarterly-name">Morning</div>
             <div class="quarterly-icon" > <span class="quarterly-icon-mat material-symbols-outlined">{{ morningWeatherAverage.icon }}</span> </div>
-            <div class="quarterly-humidity" > @if (morningWeatherAverage.relativeHumidity.value > 0.5) { <span class="material-symbols-outlined humidity">humidity_high</span> }{{ morningWeatherAverage.relativeHumidity.value }}% </div>
+            <div class="quarterly-humidity" > @if (morningWeatherAverage.relativeHumidity!.value > 0.5) { <span class="material-symbols-outlined humidity">humidity_high</span> }{{ morningWeatherAverage.relativeHumidity!.value }}% </div>
           </div>
           <mat-divider [vertical]="true"></mat-divider>
 
           <div class="quarterly-section">
             <div class="quarterly-name">Afternoon</div>
             <div class="quarterly-icon" > <span class="quarterly-icon-mat material-symbols-outlined">{{ afternoonWeatherAverage.icon }}</span>  </div>
-            <div class="quarterly-humidity" > @if (afternoonWeatherAverage.relativeHumidity.value > 0.5) { <span class="material-symbols-outlined humidity">humidity_high</span> }{{ afternoonWeatherAverage.relativeHumidity.value }}% </div>
+            <div class="quarterly-humidity" > @if (afternoonWeatherAverage.relativeHumidity!.value > 0.5) { <span class="material-symbols-outlined humidity">humidity_high</span> }{{ afternoonWeatherAverage.relativeHumidity!.value }}% </div>
           </div>
           <mat-divider [vertical]="true"></mat-divider>
 
           <div class="quarterly-section">
             <div class="quarterly-name">Evening</div>
             <div class="quarterly-icon" > <span class="quarterly-icon-mat material-symbols-outlined">{{ eveningWeatherAverage.icon }}</span>  </div>
-            <div class="quarterly-humidity" > @if (eveningWeatherAverage.relativeHumidity.value > 0.5) { <span class="material-symbols-outlined humidity">humidity_high</span> }{{ eveningWeatherAverage.relativeHumidity.value }}% </div>
+            <div class="quarterly-humidity" > @if (eveningWeatherAverage.relativeHumidity!.value > 0.5) { <span class="material-symbols-outlined humidity">humidity_high</span> }{{ eveningWeatherAverage.relativeHumidity!.value }}% </div>
           </div>
           <mat-divider [vertical]="true"></mat-divider>
 
           <div class="quarterly-section">
             <div class="quarterly-name">Overnight</div>
             <div class="quarterly-icon" > <span class="quarterly-icon-mat material-symbols-outlined">{{ overnightWeatherAverage.icon }}</span> </div>
-            <div class="quarterly-humidity" > @if (overnightWeatherAverage.relativeHumidity.value > 0.5) { <span class="material-symbols-outlined humidity">humidity_high</span> } {{ overnightWeatherAverage.relativeHumidity.value }}% </div>
+            <div class="quarterly-humidity" > @if (overnightWeatherAverage.relativeHumidity!.value > 0.5) { <span class="material-symbols-outlined humidity">humidity_high</span> } {{ overnightWeatherAverage.relativeHumidity!.value }}% </div>
           </div>
         </div>
       </mat-card>
