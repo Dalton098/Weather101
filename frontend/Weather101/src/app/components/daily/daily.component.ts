@@ -1,35 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
-import { MatTableDataSource } from '@angular/material/table';
 import { getTranslation } from '../../icon-mapping';
-
-export interface DailyForecast {
-  number:number;
-  name:string;
-  startTime: Date;
-  endTime: Date;
-  isDaytime:boolean;
-  temperature:number;
-  temperatureUnit: string;
-  temperatureTrend: any;
-  probabilityOfPrecipitation:{
-      unitCode: string;
-      value: number;
-  },
-  dewpoint:{
-      unitCode:string;
-      value: number;
-  },
-  relativeHumidity:{
-      unitCode:string;
-      value: number;
-  },
-  windSpeed: number;
-  windDirection: 'N' | 'S' | 'E' | 'W' | 'NE' | 'SE' | 'NW' | 'SW'
-  icon: string,
-  shortForecast: string,
-  detailedForecast: string
-}
+import { DailyForecast } from '../../common/Forecast';
 
 @Component({
   selector: 'app-daily',
@@ -63,16 +35,16 @@ export class DailyComponent implements AfterViewInit {
         const forecasts = forecast.properties.periods.map((period: any) => this.periodToDailyForecast(period))
           .filter((forecast: DailyForecast) => this.todaysDate.getDay() === forecast.startTime.getDay() );
         
-        this.averageWeather = this.averageForecast(forecasts);
+        this.averageWeather = DailyComponent.averageForecast(forecasts);
         // just split evenly for quarters, its wrong but no one cares
         let cursor = 0;
-        this.morningWeatherAverage = this.averageForecast(forecasts.slice(cursor, cursor +  forecasts.length / 4));
+        this.morningWeatherAverage = DailyComponent.averageForecast(forecasts.slice(cursor, cursor +  forecasts.length / 4));
         cursor += forecasts.length / 4;
-        this.afternoonWeatherAverage = this.averageForecast(forecasts.slice(cursor,  cursor + forecasts.length / 4));
+        this.afternoonWeatherAverage = DailyComponent.averageForecast(forecasts.slice(cursor,  cursor + forecasts.length / 4));
         cursor += forecasts.length / 4;
-        this.eveningWeatherAverage = this.averageForecast(forecasts.slice(cursor, cursor +  forecasts.length / 4));
+        this.eveningWeatherAverage = DailyComponent.averageForecast(forecasts.slice(cursor, cursor +  forecasts.length / 4));
         cursor += forecasts.length / 4;
-        this.overnightWeatherAverage = this.averageForecast(forecasts.slice(cursor, cursor + forecasts.length / 4));
+        this.overnightWeatherAverage = DailyComponent.averageForecast(forecasts.slice(cursor, cursor + forecasts.length / 4));
         cursor += forecasts.length / 4;
 
         this.dayAverage = Math.round((this.morningWeatherAverage.temperature + this.afternoonWeatherAverage.temperature) / 2);
@@ -108,7 +80,7 @@ export class DailyComponent implements AfterViewInit {
     };
   }
 
-  private averageForecast(periods: DailyForecast[]) : DailyForecast {
+  public static averageForecast(periods: DailyForecast[]) : DailyForecast {
     let shortForecasts = new Set(periods.map(p => p.shortForecast));
     let winningForecast = 'No information';
     let winnerCount = 0;
@@ -122,28 +94,29 @@ export class DailyComponent implements AfterViewInit {
 
     return {
       number: -1,
-      name: 'weather concat',
+      name: periods[0].name,
       shortForecast: winningForecast,
       detailedForecast: winningForecast,
       probabilityOfPrecipitation: {
-        unitCode: periods[0].probabilityOfPrecipitation.unitCode,
-        value: periods.map(period => period.probabilityOfPrecipitation.value).reduce((a, b) => a + b) / periods.length
+        unitCode: periods[0].probabilityOfPrecipitation!.unitCode,
+        value: periods.map(period => period.probabilityOfPrecipitation!.value).reduce((a, b) => a + b) / periods.length
       },
-      startTime: new Date(),
-      endTime: new Date(),
+      day: periods[0].name,
+      startTime: new Date(periods[0].startTime),
+      endTime: new Date(periods[0].endTime),
       isDaytime: periods[periods.length - 1].isDaytime,
       temperature: Math.round(periods.map(period => period.temperature).reduce((a, b) => a + b) / periods.length),
       temperatureUnit: periods[0].temperatureUnit,
       temperatureTrend: periods[0].temperatureTrend,
       dewpoint: {
-        unitCode: periods[0].dewpoint.unitCode,
-        value: periods.map(period => period.dewpoint.value).reduce((a, b) => a + b) / periods.length
+        unitCode: periods[0].dewpoint!.unitCode,
+        value: periods.map(period => period.dewpoint!.value).reduce((a, b) => a + b) / periods.length
       },
       relativeHumidity: {
-        unitCode: periods[0].relativeHumidity.unitCode,
-        value: Math.round(periods.map(period => period.relativeHumidity.value).reduce((a, b) => a + b) / periods.length)
+        unitCode: periods[0].relativeHumidity!.unitCode,
+        value: Math.round(periods.map(period => period.relativeHumidity!.value).reduce((a, b) => a + b) / periods.length)
       },
-      windSpeed: periods.map(period => period.windSpeed).reduce((a, b) => a + b) / periods.length,
+      windSpeed: periods[0].windSpeed,
       windDirection: Array.from(new Set(periods.map(period => period.windDirection))).join('/') as any,
       icon: getTranslation(winningForecast),
     }

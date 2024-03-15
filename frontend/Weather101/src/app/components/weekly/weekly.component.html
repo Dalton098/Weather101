@@ -1,0 +1,60 @@
+<div class="weekly-wrapper">
+    <mat-card class="weekly-table">
+      <mat-card-header>
+        <mat-card-title class="weekly-title">Weekly Forecast - Malvern, PA</mat-card-title>
+        <mat-card-subtitle class="date-title">
+            <mat-card id="today-card">
+                <mat-card-header class="today-header">
+                    <mat-card-title class="weekly-title">{{ todaysForecast ? todaysForecast.day : "" }}</mat-card-title>
+                </mat-card-header>
+                <div class="today-card-body">
+                  <div>
+                    <div class="temperature">
+                      {{ todaysForecast ? todaysForecast.temperature : 0}}°
+                    </div>
+                    <div class="forecast">
+                      {{ todaysForecast ? todaysForecast.shortForecast: "" }}
+                    </div>
+                  </div>
+                  <span class="today-card-right material-symbols-outlined">{{ todaysForecast ? todaysForecast.icon : "" }}</span>
+                </div>
+              </mat-card>
+        </mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="table-content">
+  
+          <ng-container matColumnDef="Day">
+            <th mat-header-cell *matHeaderCellDef> Day </th>
+            <td mat-cell *matCellDef="let hourlyForecast"> {{hourlyForecast.day}} {{hourlyForecast.startTime.toLocaleDateString("en-US", {day: "numeric", month: "long"})}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="Temperature">
+            <th mat-header-cell *matHeaderCellDef> Temperature </th>
+            <td mat-cell *matCellDef="let hourlyForecast"> {{hourlyForecast.temperature}}° </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="Forecast">
+            <th mat-header-cell *matHeaderCellDef> Forecast </th>
+            <td mat-cell *matCellDef="let hourlyForecast"> <span class="material-symbols-outlined forecast">{{hourlyForecast.icon}}</span> {{hourlyForecast.shortForecast}} </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="Humidity">
+            <th mat-header-cell *matHeaderCellDef> Humidity </th>
+            <td mat-cell *matCellDef="let hourlyForecast"> <span class="material-symbols-outlined humidity">humidity_high</span> {{hourlyForecast.humidity}}% </td>
+          </ng-container>
+        
+          <ng-container matColumnDef="Wind">
+            <th mat-header-cell *matHeaderCellDef> Wind </th>
+            <td mat-cell *matCellDef="let hourlyForecast"> <span class="material-symbols-outlined windy">air</span> {{hourlyForecast.windDirection}} {{hourlyForecast.windSpeed}} </td>
+          </ng-container>
+        
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        
+        </table>
+      </mat-card-content>
+    </mat-card>
+</div>
+  
