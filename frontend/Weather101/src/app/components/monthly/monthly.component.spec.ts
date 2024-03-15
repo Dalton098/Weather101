@@ -15,7 +15,7 @@ import { MonthlyComponent } from './monthly.component';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
-describe('HourlyComponent', () => {
+describe('MonthlyComponent', () => {
 
   /**
    * The hourlyComponent
@@ -31,8 +31,8 @@ describe('HourlyComponent', () => {
    * Setup for the test
    */
   beforeEach(async () => {
-    let weatherServiceSpy = jasmine.createSpyObj("WeatherService", ["latLonHourlyWeatherForcast"]);
-    weatherServiceSpy.latLonHourlyWeatherForcast.and.returnValue(of(theSauce));
+    let weatherServiceSpy = jasmine.createSpyObj("WeatherService", ["latLon12HourWeatherForcast"]);
+    weatherServiceSpy.latLon12HourWeatherForcast.and.returnValue(of(theSauce));
     await TestBed.configureTestingModule({
       declarations: [MonthlyComponent],
       imports: [
