@@ -41,9 +41,15 @@ dependencies:
   '@types/cesium':
     specifier: ^1.70.0
     version: 1.70.0
+  angular-calendar:
+    specifier: ^0.31.0
+    version: 0.31.0(@angular/core@17.1.2)
   cesium:
     specifier: ^1.114.0
     version: 1.114.0
+  date-fns:
+    specifier: ^3.5.0
+    version: 3.5.0
   rxjs:
     specifier: ~7.8.0
     version: 7.8.1
@@ -2799,6 +2805,10 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@mattlewis92/dom-autoscroller@2.4.2:
+    resolution: {integrity: sha512-YbrUWREPGEjE/FU6foXcAT1YbVwqD/jkYnY1dFb0o4AxtP3s4xKBthlELjndZih8uwsDWgQZx1eNskRNe2BgZQ==}
+    dev: false
+
   /@ngtools/webpack@17.1.2(@angular/compiler-cli@17.1.2)(typescript@5.3.3)(webpack@5.89.0):
     resolution: {integrity: sha512-MdNVSIp0x8AK26L+CxMTXH4weq2sNIp4C09RSdk7y6UkfBxMA3O0jTto9tW3ehkBaaGZ4dSiWkXA8L/ydMiQmA==}
     engines: {node: ^18.13.0 || >=20.9.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -3072,6 +3082,11 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@scarf/scarf@1.3.0:
+    resolution: {integrity: sha512-lHKK8M5CTcpFj2hZDB3wIjb0KAbEOgDmiJGDv1WBRfQgRm/a8/XMEkG/N1iM01xgbUDsPQwi42D+dFo1XPAKew==}
+    requiresBuild: true
+    dev: false
 
   /@schematics/angular@17.1.2:
     resolution: {integrity: sha512-1GlH0POaN7hVDF1sAm90E5SvAqnKK+PbD1oKSpug9l+1AUQ3vOamyGhEAaO+IxUqvNdgqZexxd5o9MyySTT2Zw==}
@@ -3544,6 +3559,39 @@ packages:
       uri-js: 4.4.1
     dev: true
 
+  /angular-calendar@0.31.0(@angular/core@17.1.2):
+    resolution: {integrity: sha512-QGPObUmOYLr4IeSaj1pzZjcycN6otYx+SbeezJuujstXR9f2wo4CtMlBQ+SU+ZF5VFfrdYge8qkxMGCLBLBRrw==}
+    peerDependencies:
+      '@angular/core': '>=15.0.0'
+    dependencies:
+      '@angular/core': 17.1.2(rxjs@7.8.1)(zone.js@0.14.3)
+      '@scarf/scarf': 1.3.0
+      angular-draggable-droppable: 8.0.0(@angular/core@17.1.2)
+      angular-resizable-element: 7.0.2(@angular/core@17.1.2)
+      calendar-utils: 0.10.4
+      positioning: 2.0.1
+      tslib: 2.6.2
+    dev: false
+
+  /angular-draggable-droppable@8.0.0(@angular/core@17.1.2):
+    resolution: {integrity: sha512-+gpSNBbygjV1pxTxsM3UPJKcXHXJabYoTtKcgQe74rGnb1umKc07XCBD1qDzvlG/kocthvhQ12qfYOYzHnE3ZA==}
+    peerDependencies:
+      '@angular/core': '>=15.0.0'
+    dependencies:
+      '@angular/core': 17.1.2(rxjs@7.8.1)(zone.js@0.14.3)
+      '@mattlewis92/dom-autoscroller': 2.4.2
+      tslib: 2.6.2
+    dev: false
+
+  /angular-resizable-element@7.0.2(@angular/core@17.1.2):
+    resolution: {integrity: sha512-/BGuNiA38n9klexHO1xgnsA3VYigj9v+jUGjKtBRgfB26bCxZKsNWParSu2k3EqbATrfAJC4Nl8f7cORpJFf4w==}
+    peerDependencies:
+      '@angular/core': '>=15.0.0'
+    dependencies:
+      '@angular/core': 17.1.2(rxjs@7.8.1)(zone.js@0.14.3)
+      tslib: 2.6.2
+    dev: false
+
   /ansi-colors@4.1.3:
     resolution: {integrity: sha512-/6w/C21Pm1A7aZitlI5Ni/2J6FFQN8i1Cvz3kHABAAbw93v/NlvKdVOqz7CCWz/3iv/JplRSEEZ83XION15ovw==}
     engines: {node: '>=6'}
@@ -3861,6 +3909,10 @@ packages:
       tar: 6.2.0
       unique-filename: 3.0.0
     dev: true
+
+  /calendar-utils@0.10.4:
+    resolution: {integrity: sha512-gBK4xCJ42yjaUKwuUha6cZOfxAmGzvSgbdAaX3xLRioeKbYoOK1x1qeD6dch72rsMZlTgATPbBBx42bnkStqgQ==}
+    dev: false
 
   /call-bind@1.0.5:
     resolution: {integrity: sha512-C3nQxfFZxFRVoJoGKKI8y3MOEo129NQ+FgQ08iye+Mk4zNZZGdjfs06bVTr+DBSlA66Q2VEcMki/cUCP4SercQ==}
@@ -4222,6 +4274,10 @@ packages:
   /custom-event@1.0.1:
     resolution: {integrity: sha512-GAj5FOq0Hd+RsCGVJxZuKaIDXDf3h6GQoNEjFgbLLI/trgtavwUbSnZ5pVfg27DVCaWjIohryS0JFwIJyT2cMg==}
     dev: true
+
+  /date-fns@3.5.0:
+    resolution: {integrity: sha512-a+DwyXn7NOfdJireCzAA0B9p7jIXEu/Q9JKCyMYvH6+0vPUNbQceA0neXrdfJ/xzl3mhOh5vibQQ3936Tssm6A==}
+    dev: false
 
   /date-format@4.0.14:
     resolution: {integrity: sha512-39BOQLs9ZjKh0/patS9nrT8wc3ioX3/eA/zgbKNopnF2wCqJEoxywwwElATYvRsXdnOxA/OQeQoFZ3rFjVajhg==}
@@ -6463,6 +6519,10 @@ packages:
     dependencies:
       find-up: 6.3.0
     dev: true
+
+  /positioning@2.0.1:
+    resolution: {integrity: sha512-DsAgM42kV/ObuwlRpAzDTjH9E8fGKkMDJHWFX+kfNXSxh7UCCQxEmdjv/Ws5Ft1XDnt3JT8fIDYeKNSE2TbttA==}
+    dev: false
 
   /postcss-loader@7.3.4(postcss@8.4.33)(typescript@5.3.3)(webpack@5.89.0):
     resolution: {integrity: sha512-iW5WTTBSC5BfsBJ9daFMPVrLT36MrNiC6fqOZTTaHjBNX6Pfd5p+hSBqe/fEeNd7pc13QiAyGt7VdGMw4eRC4A==}

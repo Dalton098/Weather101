@@ -1,0 +1,12 @@
+
+<div class="daily-weather-wrapper">
+  <div class ="daily-weather-container">
+    <mat-card id="daily-quarterly-weather">
+      <div class="quarterly-title">Today's Forecast for {{ location }}</div>
+      
+      <div class="quarterly-card-body">
+        <mwl-calendar-month-view class='joe-calendar' [viewDate]="todaysDate"></mwl-calendar-month-view>
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -21,6 +21,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DailyComponent } from './components/daily/daily.component';
 import {MatCardModule} from '@angular/material/card'; 
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { MonthlyComponent } from './components/monthly/monthly.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import {MatCardModule} from '@angular/material/card';
     CesiumDirective,
     HourlyComponent,
     DashboardComponent,
-    DailyComponent
+    DailyComponent,
+    MonthlyComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,11 @@ import {MatCardModule} from '@angular/material/card';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
   ],
   providers: [
     provideAnimationsAsync()
