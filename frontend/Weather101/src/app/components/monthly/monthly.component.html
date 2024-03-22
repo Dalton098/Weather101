@@ -1,11 +1,11 @@
 
-<div class="daily-weather-wrapper">
-  <div class ="daily-weather-container">
-    <mat-card id="daily-quarterly-weather">
-      <div class="quarterly-title">Monthly Forecast for {{ location }}</div>
+<div class="monthly-weather-wrapper">
+  <div class ="monthly-weather-container">
+    <mat-card id="monthly-weather">
+      <div class="monthly-title">Monthly Forecast for {{ location }}</div>
       
       <div class="monthly-card-body">
-        <mwl-calendar-month-view class='joe-calendar' [viewDate]="todaysDate"></mwl-calendar-month-view>
+        <mwl-calendar-month-view class='calendar' [viewDate]="todaysDate"></mwl-calendar-month-view>
       </div>
     </mat-card>
   </div>

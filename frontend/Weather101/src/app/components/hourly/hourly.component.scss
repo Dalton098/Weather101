@@ -1,8 +1,22 @@
 @import "../../../styles.scss";
 
 ::ng-deep .humidity {
-  color: $accent-color
+  color: $accent-color;
+  position: relative;
+  top: 5px
 }
+
+::ng-deep .windy {
+  position: relative;
+  top: 5px
+}
+
+::ng-deep .forecast-table {
+  position: relative;
+  top: 5px
+}
+
+
 
 .hourly-table {
   width: 70%;
