@@ -70,3 +70,15 @@
 .selected-title {
     background-color: $highlight-color
 }
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color:red;
+    background-color: green;
+}
+
+::ng-deep .mdc-tab__text-label {
+    color: white !important;
+    font-family: 'Heebo';
+    font-size: x-large;
+    font-weight: bolder;
+}
