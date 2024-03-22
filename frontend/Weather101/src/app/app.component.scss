@@ -70,3 +70,10 @@
 .selected-title {
     background-color: $highlight-color
 }
+
+::ng-deep .mdc-tab__text-label {
+    color: white !important;
+    font-family: 'Heebo';
+    font-size: x-large;
+    font-weight: bolder;
+}

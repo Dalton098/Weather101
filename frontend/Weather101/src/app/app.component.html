@@ -7,13 +7,32 @@
         <div class="search-form">
             <input type="text" class="round" placeholder="(Zip/Location)">
         </div>
-        <mat-icon class="right-selection-item">menu</mat-icon>
+        <button mat-icon-button [mat-menu-trigger-for]="menu">
+            <mat-icon class="right-selection-item">menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item [routerLink]="['/dashboard']">Dashboard</button>
+            <button mat-menu-item [routerLink]="['/alerts']">Alerts</button>
+            <button mat-menu-item [routerLink]="['/daily']">Today</button>
+            <button mat-menu-item [routerLink]="['/hourly']">Hourly</button>
+            <button mat-menu-item [routerLink]="['/weekly']">Weekly</button>
+            <button mat-menu-item [routerLink]="['/monthly']">Monthly</button>
+        </mat-menu>
     </mat-toolbar-row>
     <mat-toolbar-row class="title-selection fira-code title-coloring">
-        <button mat-button id="title-today" [routerLink]="['/daily']" [ngClass]="{'selected-title': currentRoute === 'daily'}"  (click)='setCurrentRoute("daily")'  class="title-selection-item">Today</button>
-        <button mat-button id="title-hourly" [routerLink]="['/hourly']" [ngClass]="{'selected-title': currentRoute === 'hourly'}" (click)='setCurrentRoute("hourly")' class="title-selection-item">Hourly</button>
-        <button mat-button id="title-weekly" [routerLink]="['/weekly']" [ngClass]="{'selected-title': currentRoute === 'weekly'}" (click)='setCurrentRoute("weekly")' class="title-selection-item">Weekly</button>
-        <button mat-button id="title-monthly" [routerLink]="['/monthly']" [ngClass]="{'selected-title': currentRoute === 'monthly'}" (click)='setCurrentRoute("monthly")'class="title-selection-item">Monthly</button>
+        <nav class="title-selection-item" mat-tab-nav-bar [tabPanel]="tabPanel">
+            <a
+                mat-tab-link
+                *ngFor="let link of navLinks"
+                routerLink="{{ link.link }}"
+                routerLinkActive
+                #rla="routerLinkActive"
+                [active]="rla.isActive"
+            >{{link.label}}</a>
+        </nav>
+        <mat-tab-nav-panel #tabPanel>
+            <router-outlet></router-outlet>
+        </mat-tab-nav-panel>
     </mat-toolbar-row>
 </mat-toolbar>
 

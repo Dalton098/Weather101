@@ -7,24 +7,26 @@ import { CesiumDirective } from './directives/cesium.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { HourlyComponent } from './components/hourly/hourly.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule} from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DailyComponent } from './components/daily/daily.component';
-import {MatCardModule} from '@angular/material/card'; 
+import { MatCardModule} from '@angular/material/card'; 
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MonthlyComponent } from './components/monthly/monthly.component';
-import { WeeklyComponent } from './components/weekly/weekly.component'; 
+import { WeeklyComponent } from './components/weekly/weekly.component';
+import { AlertsComponent } from './components/alerts/alerts.component'; 
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { WeeklyComponent } from './components/weekly/weekly.component';
     DashboardComponent,
     DailyComponent,
     MonthlyComponent,
-    WeeklyComponent
+    WeeklyComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +56,7 @@ import { WeeklyComponent } from './components/weekly/weekly.component';
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
+    MatTabsModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,
