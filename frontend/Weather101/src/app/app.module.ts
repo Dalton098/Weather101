@@ -20,7 +20,10 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DailyComponent } from './components/daily/daily.component';
-import {MatCardModule} from '@angular/material/card';
+import {MatCardModule} from '@angular/material/card'; 
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { MonthlyComponent } from './components/monthly/monthly.component';
 import { WeeklyComponent } from './components/weekly/weekly.component'; 
 
 @NgModule({
@@ -30,6 +33,7 @@ import { WeeklyComponent } from './components/weekly/weekly.component';
     HourlyComponent,
     DashboardComponent,
     DailyComponent,
+    MonthlyComponent,
     WeeklyComponent
   ],
   imports: [
@@ -48,7 +52,11 @@ import { WeeklyComponent } from './components/weekly/weekly.component';
     FormsModule,
     MatInputModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    })
   ],
   providers: [
     provideAnimationsAsync()
