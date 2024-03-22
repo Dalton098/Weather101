@@ -5,6 +5,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { getTranslation } from './icon-mapping';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -13,7 +15,9 @@ describe('AppComponent', () => {
         RouterTestingModule,
         MatToolbarModule,
         MatFormFieldModule,
-        MatIconModule
+        MatMenuModule,
+        MatIconModule,
+        MatTabsModule
       ],
       declarations: [
         AppComponent

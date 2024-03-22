@@ -25,7 +25,8 @@ import { MatCardModule} from '@angular/material/card';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MonthlyComponent } from './components/monthly/monthly.component';
-import { WeeklyComponent } from './components/weekly/weekly.component'; 
+import { WeeklyComponent } from './components/weekly/weekly.component';
+import { AlertsComponent } from './components/alerts/alerts.component'; 
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { WeeklyComponent } from './components/weekly/weekly.component';
     DashboardComponent,
     DailyComponent,
     MonthlyComponent,
-    WeeklyComponent
+    WeeklyComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,

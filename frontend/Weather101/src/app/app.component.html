@@ -11,7 +11,11 @@
             <mat-icon class="right-selection-item">menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-            <button mat-flat-button [routerLink]="['/dashboard']">Dashboard</button>
+            <button mat-menu-item [routerLink]="['/dashboard']">Dashboard</button>
+            <button mat-menu-item [routerLink]="['/alerts']">Alerts</button>
+            <button mat-menu-item [routerLink]="['/daily']">Today</button>
+            <button mat-menu-item [routerLink]="['/weekly']">Weekly</button>
+            <button mat-menu-item [routerLink]="['/monthly']">Monthly</button>
         </mat-menu>
     </mat-toolbar-row>
     <mat-toolbar-row class="title-selection fira-code title-coloring">
