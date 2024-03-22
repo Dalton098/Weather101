@@ -66,18 +66,6 @@
     width: 100%;
 }
 
-// .mat-mdc-tab-list {
-//     color: white !important;
-//     font-size: 20pt;
-//     width: 100%;
-// }
-
-// .mat-mdc-tab-header {
-//     color: white !important;
-//     font-size: 20pt;
-//     width: 100%;
-// }
-
 .left-selection-item {
     cursor: pointer;
     justify-content: left;
@@ -93,11 +81,6 @@
 
 .selected-title {
     background-color: $highlight-color
-}
-
-::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
-    color:red;
-    background-color: green;
 }
 
 ::ng-deep .mdc-tab__text-label {
