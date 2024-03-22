@@ -1,8 +1,21 @@
 @import "../../../styles.scss";
 
 ::ng-deep .humidity {
-  color: $accent-color
+  color: $accent-color;
+  position: relative;
+  top: 5px
 }
+
+::ng-deep .windy {
+  position: relative;
+  top: 5px
+}
+
+::ng-deep .forecast-table {
+  position: relative;
+  top: 5px
+}
+
 
 mat-card {
   border-radius: 20px;
@@ -79,6 +92,7 @@ mat-card {
   font-family: "Heebo", sans-serif !important;
   font-size: xx-large;
   font-weight: 600;
+  padding-left: 10px;
 }
 
 .date-title {

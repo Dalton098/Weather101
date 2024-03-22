@@ -1,118 +1,61 @@
 @import '../../../styles.scss';
-.daily-weather-container {
-    color: white !important;
-}
-.daily-card-right {
-    border: 1px;
-    width: 95%;
-    height: 95%;
-}
 
-.daily-weather-container {
-    padding: 15px;
-    justify-content:center;
-}
-.joe-calendar {
+.calendar {
     width: 95%;
 }
 
 ::ng-deep .calendar-icon {
-    margin-top: 35px;
     display:flex;
     justify-content:center;
     font-size: 30pt;
-    margin-left: 20px;
 }
 ::ng-deep .calendar-text {
     display:flex;
     justify-content:center;
     font-size: 12pt;
-    margin-left: 2px;
+    margin-left: 4px;
+    margin-top: 2px;
 }
 
-.temperature {
-    font-size: xxx-large;
-    padding-top:25px;
-    padding-bottom: 25px;
-    padding-left: 15px;
-}
-.forecast {
-    font-size: x-large;
-    padding-left: 15px;
-}
-.day-night {
-    font-size: x-large;
-    padding-top:20px;
-    padding-left: 15px;
-    font-weight:700;
+::ng-deep .cal-header {
+    font-size: large;
 }
 
-.quarterly-title {
+::ng-deep .cal-day-number {
+  display: flex;
+  justify-content: center;
+  opacity: 1 !important;
+  color: black !important;
+  margin-top: unset !important;
+  margin-right: unset !important;
+  float: unset !important;
+}
+
+
+.monthly-title {
     padding-left:15px;
 }
 
-.daily-weather-wrapper {
+.monthly-weather-wrapper {
     width :100%;
     display:flex;
     justify-content: center;
 }
 
-.quarterly-title {
+.monthly-title {
     margin-top: 20px;
     font-size:medium;
     font-weight:800;
 }
 
-#daily-overall-weather {
-    border-radius: 20px
-}
-.daily-overall-header {
-    width: 100%;
-    background-color: $highlight-color;
-    border-radius: 20px 20px 0px 0px !important;
-    padding: 0px !important;
-    height: 64px;
-    font-size: xx-large;
-}
-#location {
-    margin-left: 20px;
-    margin-top: 25px;
-}
-.forecast {
-    font-size: x-large;
-}
-.daily-card-body {
-    background-color: $secondary-color;
-    padding-top: 25px;
-    border-radius: 0px 0px 20px 20px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: 25px;
-}
-
-#daily-quarterly-weather {
+#monthly-weather {
     color: black !important;
     margin-top:20px;
     border-radius: 20px;
 }
 
-#daily-overall-header {
-    border-radius: 20px !important
-}
-
-.daily-weather-container {
+.monthly-weather-container {
     width: 70%;
-}
-
-.daily-card-right {
-    text-align:right;
-    border: 1px;
-    height: 100%;
-    width: 70%;
-    font-size: 107pt;
-    margin-right: 95px;
-    color: black;
 }
 
 .monthly-card-body {
@@ -120,37 +63,4 @@
     justify-content: center;
     width: 100%;
     padding-bottom: 20px
-}
-
-.quarterly-section {
-    display: inline-grid;
-    justify-content: center;
-    width: 24%;
-    padding-top: 15px;
-}
-
-.quarterly-icon {
-    display: flex;
-    justify-content: center;
-}
-
-.quarterly-icon-mat {
-    padding-top: 15px;
-    font-size: 50px;
-}
-
-.quarterly-name {
-    font-size: 30px;
-}
-
-.quarterly-humidity {
-    display: flex;
-    padding-top: 10px;
-    justify-self: center;
-    font-size: 20px;
-    padding-bottom: 15px;
-}
-
-.humidity {
-    color: $accent-color;
 }
