@@ -5,6 +5,7 @@ import { getTranslation } from '../../icon-mapping';
 import { CalendarMonthViewBeforeRenderEvent, CalendarMonthViewDay } from 'angular-calendar';
 import { DailyForecast } from '../../common/Forecast';
 import { DailyComponent } from '../daily/daily.component';
+import { Location } from '../../common/Location';
 
 export interface MonthlyForecast {
   number:number;
@@ -44,17 +45,17 @@ export class MonthlyComponent implements AfterViewInit {
   public todaysDate:Date = new Date();
   public dayAverage = 0;
   public nightAverage = 0;
-  public location = "Malvern, PA";
+  public location = "";
   private _monthlyForecast = {} as any;
 
   constructor (private weatherService: WeatherService, private changeDetectorRef: ChangeDetectorRef)
   {
   }
 
-  ngAfterViewInit(): void {
-
-    this.weatherService.latLon12HourWeatherForcast(40, 75).subscribe(forecast => 
+  renderPage(location: Location) {
+    this.weatherService.latLon12HourWeatherForcast(location.latitude, location.longitude).subscribe(forecast => 
       {
+        this.location = `${location.city}, ${location.state}`;
         const days: DailyForecast[] = [];
         const periods = forecast.properties.periods;
         for (let i = 0; i < periods.length; i += 2) {
@@ -99,5 +100,11 @@ export class MonthlyComponent implements AfterViewInit {
           (cell as any).querySelector('span').innerHTML = html;
         }
       });
+      this.changeDetectorRef.detectChanges();
+  }
+
+  ngAfterViewInit(): void {
+    this.renderPage(this.weatherService.getStoredLocation());
+    this.weatherService.zipCodeEventEmitter.subscribe((loc => { this.renderPage(loc)}));
   }
 }

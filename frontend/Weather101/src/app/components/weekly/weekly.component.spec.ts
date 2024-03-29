@@ -1,11 +1,11 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import * as theSauce from "./testData.json";
 import { WeeklyComponent } from './weekly.component';
 import { of } from 'rxjs';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { WeatherService } from '../../services/weather.service';
+import weatherServiceSpy from '../../app.component.spec';
 
 describe('WeeklyComponent', () => {
 
@@ -16,12 +16,10 @@ describe('WeeklyComponent', () => {
   let fixture: ComponentFixture<WeeklyComponent>;
 
   beforeEach(async () => {
-    let weatherServiceSpy = jasmine.createSpyObj("WeatherService", ["latLon12HourWeatherForcast"]);
-    weatherServiceSpy.latLon12HourWeatherForcast.and.returnValue(of(theSauce));
     await TestBed.configureTestingModule({
       declarations: [WeeklyComponent],
       imports: [MatTableModule, MatCardModule],
-      providers: [{provide: WeatherService, useValue: weatherServiceSpy}]
+      providers: [{provide: WeatherService, useValue: weatherServiceSpy()}]
     })
     .compileComponents();
     
@@ -39,3 +37,4 @@ describe('WeeklyComponent', () => {
     expect(component.displayedColumns).toBeDefined();
   });
 });
+

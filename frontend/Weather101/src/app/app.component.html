@@ -5,7 +5,7 @@
             <span class="title-route genos">{{ title }}</span>
         </div>
         <div class="search-form">
-            <input type="text" class="round" placeholder="(Zip/Location)">
+            <input type="number" class="round" placeholder="(Zip code)" [(ngModel)]="searchText" (change)="storeLocation()">
         </div>
         <button mat-icon-button [mat-menu-trigger-for]="menu">
             <mat-icon class="right-selection-item">menu</mat-icon>

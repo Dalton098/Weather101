@@ -59,4 +59,22 @@ describe('WeatherService', () => {
       service.latLonHourlyWeatherForcast(40, 75);
     });
 
+    it('can fetch and store a location', () => {
+      httpClient.get("/zipcode/25").subscribe(data => expect(data).toBeDefined());
+      service.fetchLocation(25);
+      expect(service.getStoredLocation()).toBeDefined();
+
+      spyOn(window.localStorage, 'getItem').and.returnValue("{\"zip\":\"19355\",\"latitude\":40.0468,\"longitude\":-75.531,\"city\":\"Malvern\",\"state\":\"PA\",\"country\":\"US\"}");
+      spyOn(window.localStorage, 'setItem').and.callFake(() => {});
+      expect(service.getStoredLocation()).toBeDefined();
+      service.setStoredLocation({
+        zip: "",
+        latitude: 5,
+        longitude: 5,
+        city: "",
+        state: "",
+        country: ""
+      });
+    });
+
 });
