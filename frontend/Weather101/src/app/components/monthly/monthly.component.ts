@@ -100,6 +100,7 @@ export class MonthlyComponent implements AfterViewInit {
           (cell as any).querySelector('span').innerHTML = html;
         }
       });
+      this.changeDetectorRef.detectChanges();
   }
 
   ngAfterViewInit(): void {
