@@ -17,9 +17,6 @@ dependencies:
   express-http-proxy:
     specifier: ^2.0.0
     version: 2.0.0
-  zipcodes:
-    specifier: ^8.0.0
-    version: 8.0.0
 
 devDependencies:
   '@types/express':
@@ -919,7 +916,3 @@ packages:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
     engines: {node: '>=6'}
     dev: true
-
-  /zipcodes@8.0.0:
-    resolution: {integrity: sha512-V8NolFaJhsPamGeCv5lJdk60Q7JBiXI6e+8JDksPC1NJWZ0t7g1OFfqVLZb2Nc2F5jmf9JTdYdWJBnIhGBvtbA==}
-    dev: false

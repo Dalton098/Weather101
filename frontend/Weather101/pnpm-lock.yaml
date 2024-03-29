@@ -56,9 +56,6 @@ dependencies:
   tslib:
     specifier: ^2.3.0
     version: 2.6.2
-  zipcodes:
-    specifier: ^8.0.0
-    version: 8.0.0
   zone.js:
     specifier: ~0.14.3
     version: 0.14.3
@@ -8071,10 +8068,6 @@ packages:
     resolution: {integrity: sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==}
     engines: {node: '>=12.20'}
     dev: true
-
-  /zipcodes@8.0.0:
-    resolution: {integrity: sha512-V8NolFaJhsPamGeCv5lJdk60Q7JBiXI6e+8JDksPC1NJWZ0t7g1OFfqVLZb2Nc2F5jmf9JTdYdWJBnIhGBvtbA==}
-    dev: false
 
   /zone.js@0.14.3:
     resolution: {integrity: sha512-jYoNqF046Q+JfcZSItRSt+oXFcpXL88yq7XAZjb/NKTS7w2hHpKjRJ3VlFD1k75wMaRRXNUt5vrZVlygiMyHbA==}
