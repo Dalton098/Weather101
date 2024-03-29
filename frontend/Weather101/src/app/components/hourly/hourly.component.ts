@@ -3,6 +3,7 @@ import { WeatherService } from '../../services/weather.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { getTranslation } from '../../icon-mapping';
 import { DailyForecast } from '../../common/Forecast';
+import { Location } from '../../common/Location';
 
 @Component({
   selector: 'app-hourly',
@@ -13,6 +14,8 @@ export class HourlyComponent implements AfterViewInit {
 
   public hourlyForecasts:DailyForecast[] = [];
   public todaysDate:Date = new Date();
+  public city: string;
+  public state: string;
 
   displayedColumns: string [] = ['Time', 'Temperature', 'Forecast', 'Humidity', 'Wind']
   dataSource = new MatTableDataSource<DailyForecast>(this.hourlyForecasts);
@@ -21,10 +24,11 @@ export class HourlyComponent implements AfterViewInit {
   {
   }
 
-
-  ngAfterViewInit(): void {
-    this.weatherService.latLonHourlyWeatherForcast(40, 75).subscribe(forecast => 
+  renderPage(location: Location) {
+    this.weatherService.latLonHourlyWeatherForcast(location.latitude, location.longitude).subscribe(forecast => 
       {
+        this.city = location.city;
+        this.state = location.state;
         for (let period of forecast.properties.periods)
         {
           const hourlyForecast:DailyForecast =
@@ -45,5 +49,11 @@ export class HourlyComponent implements AfterViewInit {
         this.dataSource.data = this.hourlyForecasts.sort((firstItem, secondItem) => { return firstItem.startTime.getTime() - secondItem.startTime.getTime()});
         this.changeDetectorRef.detectChanges();
       });
+  }
+
+
+  ngAfterViewInit(): void {
+    this.renderPage(this.weatherService.getStoredLocation());
+    this.weatherService.zipCodeEventEmitter.subscribe((loc => { this.renderPage(loc)}));
   }
 }

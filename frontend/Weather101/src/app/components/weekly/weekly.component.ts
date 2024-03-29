@@ -4,6 +4,7 @@ import { WeatherService } from '../../services/weather.service';
 import { getTranslation } from '../../icon-mapping';
 import { DailyForecast } from '../../common/Forecast';
 import { DailyComponent } from '../daily/daily.component';
+import { Location } from '../../common/Location';
 
 /**
  * {@link WeeklyComponent} is a component that will display the weather data on a weekly basis
@@ -15,6 +16,7 @@ import { DailyComponent } from '../daily/daily.component';
 })
 export class WeeklyComponent implements AfterViewInit {
 
+  public location = ""
   /**
    * The forecast data
    */
@@ -48,12 +50,11 @@ export class WeeklyComponent implements AfterViewInit {
   constructor(private weatherService: WeatherService,
               private changeDetectorRef: ChangeDetectorRef) { }
 
-  /**
-   * Initialize the forecast
-   */
-  ngAfterViewInit(): void {
-    this.weatherService.latLon12HourWeatherForcast(40, 75).subscribe(forecast => 
+
+  renderPage(location: Location) {
+    this.weatherService.latLon12HourWeatherForcast(location.latitude, location.longitude).subscribe(forecast => 
       {
+        this.location = `${location.city}, ${location.state}`
         const days: DailyForecast[] = [];
         const periods = forecast.properties.periods;
         for (let i = 0; i < periods.length; i += 2) {
@@ -84,6 +85,14 @@ export class WeeklyComponent implements AfterViewInit {
                                     .sort((firstItem, secondItem) => { return firstItem.startTime.getTime() - secondItem.startTime.getTime()});
         this.changeDetectorRef.detectChanges();
       });
+  }
+
+  /**
+   * Initialize the forecast
+   */
+  ngAfterViewInit(): void {
+    this.renderPage(this.weatherService.getStoredLocation());
+    this.weatherService.zipCodeEventEmitter.subscribe((loc => { this.renderPage(loc)}));
   }
   
   /**

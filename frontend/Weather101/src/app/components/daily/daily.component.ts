@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { WeatherService } from '../../services/weather.service';
 import { getTranslation } from '../../icon-mapping';
 import { DailyForecast } from '../../common/Forecast';
+import { Location } from '../../common/Location';
 
 @Component({
   selector: 'app-daily',
@@ -13,7 +14,7 @@ export class DailyComponent implements AfterViewInit {
   public todaysDate:Date = new Date();
   public dayAverage = 0;
   public nightAverage = 0;
-  public location = "Malvern, PA";
+  public location = "";
 
   // overall weather
   public averageWeather: DailyForecast;
@@ -28,10 +29,10 @@ export class DailyComponent implements AfterViewInit {
   {
   }
 
-
-  ngAfterViewInit(): void {
-    this.weatherService.latLonHourlyWeatherForcast(40, 75).subscribe(forecast => 
+  public renderPage(location: Location) {
+    this.weatherService.latLonHourlyWeatherForcast(location.latitude, location.longitude).subscribe(forecast => 
       {
+        this.location = `${location.city}, ${location.state}`;
         const forecasts = forecast.properties.periods.map((period: any) => this.periodToDailyForecast(period))
           .filter((forecast: DailyForecast) => this.todaysDate.getDay() === forecast.startTime.getDay() );
         
@@ -52,6 +53,12 @@ export class DailyComponent implements AfterViewInit {
         this.averageWeather.icon = this.morningWeatherAverage.icon;
         this.changeDetectorRef.detectChanges();
       });
+  }
+
+
+  ngAfterViewInit(): void {
+    this.renderPage(this.weatherService.getStoredLocation());
+    this.weatherService.zipCodeEventEmitter.subscribe((loc => { this.renderPage(loc)}));
   }
 
   private periodToDailyForecast(period: any) : DailyForecast {

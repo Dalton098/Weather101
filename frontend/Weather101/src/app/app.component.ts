@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { WeatherService } from './services/weather.service';
+import { Location } from './common/Location';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 export class AppComponent {
   title = 'Weather 101';
   currentRoute = "";
-  searchBarValue = "";
+  searchText = "";
+  search = 19355
   navLinks = [
     { link: '/daily', label: "Today"},
     { link: '/hourly', label: "Hourly"},
@@ -16,8 +19,19 @@ export class AppComponent {
     { link: '/monthly', label: 'Monthly'}
   ];
 
+  constructor(private weatherService: WeatherService) {
+    this.searchText = this.weatherService.getStoredLocation().zip;
+  }
+
   setCurrentRoute(route: string) {
     this.currentRoute = route;
   }
 
+  async storeLocation() {
+    console.log(this.searchText);
+    const location = await this.weatherService.fetchLocation(this.searchText as any);
+    if (location) {
+      this.weatherService.setStoredLocation(location);
+    }
+  }
 }
