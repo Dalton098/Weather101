@@ -23,6 +23,10 @@ export class AppComponent {
     this.searchText = this.weatherService.getStoredLocation().zip;
   }
 
+  activeAlerts() {
+    this.weatherService.activeAlerts(this.weatherService.getStoredLocation()).subscribe(data => console.log(data));
+  }
+
   setCurrentRoute(route: string) {
     this.currentRoute = route;
   }
