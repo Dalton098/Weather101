@@ -49,6 +49,10 @@ describe('WeatherService', () => {
   it('can get 12 hour data', () => {
     httpClient.get("/weather").subscribe(data => expect(data).toBeDefined());
     service.latLon12HourWeatherForcast(40, 75);
+    service.setOfficeLocation("TOP", 40, 75, "", {});
+    service.latLon12HourWeatherForcast(40, 75);
+    service.setOfficeLocation("TOP", 40, 75, WeatherService.TWELVE_HOUR_KEY, {});
+    service.latLon12HourWeatherForcast(40, 75);
   });
 
   /**
@@ -75,6 +79,7 @@ describe('WeatherService', () => {
         state: "",
         country: ""
       });
+      service.setOfficeLocation("", 10, 20, "", {});
     });
 
 });
