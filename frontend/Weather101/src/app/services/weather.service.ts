@@ -51,6 +51,14 @@ export class WeatherService {
   }
 
   /**
+   * Get Weather Alerts
+   */
+  activeAlerts(location: Location) : Observable<any> {
+    const stateName = location.state;
+    return this.http.get(`${this.baseWeatherUrl}/alerts/active/area/${stateName}`);
+  }
+
+  /**
    * Retrieves coordinates
    * @param zipCode the zip code
    * @returns coordinate location
