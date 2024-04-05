@@ -54,7 +54,8 @@ export class WeeklyComponent implements AfterViewInit {
   renderPage(location: Location) {
     this.weatherService.latLon12HourWeatherForcast(location.latitude, location.longitude).subscribe(forecast => 
       {
-        this.location = `${location.city}, ${location.state}`
+        this.weatherService.setOfficeLocation("TOP", location.latitude, location.longitude, WeatherService.TWELVE_HOUR_KEY, forecast);
+        this.location = `${location.city}, ${location.state}`;
         const days: DailyForecast[] = [];
         const periods = forecast.properties.periods;
         for (let i = 0; i < periods.length; i += 2) {

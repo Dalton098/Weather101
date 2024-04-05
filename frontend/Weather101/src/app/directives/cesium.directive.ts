@@ -1,6 +1,7 @@
 import { Directive, OnInit, ElementRef } from '@angular/core';
 import { Cartesian3, ImageryLayer, 
          ImageryProvider,
+         Ion,
          IonImageryProvider,
          SceneMode,
          Viewer,
@@ -33,6 +34,7 @@ export class CesiumDirective implements OnInit {
   * Initialize the viewer
   */
  ngOnInit() {
+    Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI3ZTA2MzgxOC0wOWE5LTQyM2UtODY3Mi0yZGY1NTIzNDIxNWMiLCJpZCI6MjA2NzkxLCJpYXQiOjE3MTIzMTk3NjR9.S0Dcg7kSRw3FzIWpFXTs4U1YcrND-cJiJ47J3uoxrmA';
     this.viewer = new Viewer(this.el.nativeElement, {
       sceneMode: SceneMode.SCENE2D,
       baseLayerPicker: false,

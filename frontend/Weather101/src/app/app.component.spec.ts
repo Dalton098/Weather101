@@ -20,7 +20,8 @@ export default function weatherServiceSpy() {
       "latLon12HourWeatherForcast",
       "latLonHourlyWeatherForcast",
       "getStoredLocation",
-      "fetchLocation"
+      "fetchLocation",
+      "setOfficeLocation"
     ],
     { zipCodeEventEmitter: {subscribe: subscribeSpy }});
   
@@ -29,6 +30,7 @@ export default function weatherServiceSpy() {
   weatherServiceSpy.latLon12HourWeatherForcast.and.returnValue(of(twelveHourSauce));
   weatherServiceSpy.getStoredLocation.and.returnValue(of(tempLocation));
   weatherServiceSpy.fetchLocation.and.returnValue(of(tempLocation));
+  weatherServiceSpy.setOfficeLocation.and.callThrough();
   return weatherServiceSpy;
 }
 

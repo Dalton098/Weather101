@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Location } from '../common/Location';
 
 /**
@@ -17,6 +17,10 @@ export class WeatherService {
   readonly baseWeatherUrl = "/weather";
 
   public readonly zipCodeEventEmitter = new EventEmitter<Location>();
+  public static readonly TWELVE_HOUR_KEY = "12HourForecast";
+  public static readonly HOURLY_KEY = "hourlyForecast";
+
+  private officeCache: Map<string, any> = new Map();
 
   /**
    * Constructor
@@ -34,7 +38,10 @@ export class WeatherService {
   latLon12HourWeatherForcast(lat: number, lon: number) : Observable<any> {
     lat = Math.abs(Number.parseInt(`${lat}`));
     lon = Math.abs(Number.parseInt(`${lon}`));
-    return this.http.get(`${this.baseWeatherUrl}/gridpoints/TOP/${lat},${lon}/forecast`);
+    return this._getDataFromApiOrCache(
+      `${this.baseWeatherUrl}/gridpoints/TOP/${lat},${lon}/forecast`,
+      lat, lon, WeatherService.TWELVE_HOUR_KEY
+    );
   }
 
   /**
@@ -45,9 +52,34 @@ export class WeatherService {
    * @returns hourly forecast data
    */
   latLonHourlyWeatherForcast(lat: number, lon: number) : Observable<any> {
+    return this._getDataFromApiOrCache(
+      `${this.baseWeatherUrl}/gridpoints/TOP/${lat},${lon}/forecast/hourly`,
+      lat, lon, WeatherService.HOURLY_KEY
+      );
+  }
+
+  /**
+   * Utility function to look up data from a cache, otherwise reach out
+   * @param url The url to hit
+   * @param lat The latitude
+   * @param lon The longitude
+   * @param key The unique key to identify the cache
+   * @returns The data
+   */
+  private _getDataFromApiOrCache(url: string, lat: number, lon: number, key: string)  {
     lat = Math.abs(Number.parseInt(`${lat}`));
     lon = Math.abs(Number.parseInt(`${lon}`));
-    return this.http.get(`${this.baseWeatherUrl}/gridpoints/TOP/${lat},${lon}/forecast/hourly`);
+    const latLonKey = `${lat},${lon},${key}`;
+    let returnData;
+    if (this.officeCache.has("TOP")) {
+      const allOfficeData = this.officeCache.get("TOP");
+      returnData = allOfficeData[latLonKey] 
+      ? of(allOfficeData[latLonKey])
+      : this.http.get(url);
+    } else {
+      returnData = this.http.get(url);
+    }
+    return returnData;
   }
 
   /**
@@ -68,5 +100,25 @@ export class WeatherService {
   setStoredLocation(location: Location) : void {
     localStorage.setItem('location', JSON.stringify(location));
     this.zipCodeEventEmitter.emit(location);
+  }
+
+  /**
+   * Save off the office data into the cache
+   * @param officeId The office ID
+   * @param lat The latitude
+   * @param lon The longitude
+   */
+  setOfficeLocation(officeId: string, lat: number, lon: number, key: string, data: any) {
+    lat = Math.abs(Number.parseInt(`${lat}`));
+    lon = Math.abs(Number.parseInt(`${lon}`));
+    let prevOffData = this.officeCache.get(officeId);
+    const latLonKey = `${lat},${lon},${key}`;
+    type objTemp = {
+      [latLonKey: string]: any
+    };
+    const obj: objTemp = {};
+    obj[latLonKey] = data;
+    prevOffData = prevOffData ? Object.assign(prevOffData, obj) : obj;
+    this.officeCache.set(officeId, prevOffData);
   }
 }
