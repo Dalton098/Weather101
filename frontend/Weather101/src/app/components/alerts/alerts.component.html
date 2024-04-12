@@ -1,1 +1,19 @@
-<p>alerts works!</p>
+<div>
+    <mat-icon class="icon-display">warning</mat-icon><span class="aligned-with-icon"><h1>Severe Weather Alerts</h1></span>
+    <br><br><br>
+    <table mat-table [dataSource]="alerts">
+        <ng-container matColumnDef="severityColor">
+            <td mat-cell *matCellDef="let alert"><mat-icon [ngClass]="getSeverityClass(alert)">radio_button_checked</mat-icon></td>
+        </ng-container>
+        <ng-container matColumnDef="severity">
+            <td mat-cell *matCellDef="let alert"> {{alert.severity}}</td>
+        </ng-container>
+        <ng-component matColumnDef="description">
+            <td mat-cell *matCellDef="let alert"> {{alert.description}}</td>
+        </ng-component>
+        <ng-component matColumnDef="startTime">
+            <td mat-cell *matCellDef="let alert"> {{alert.startTime}}</td>
+        </ng-component>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr> 
+    </table>
+</div>

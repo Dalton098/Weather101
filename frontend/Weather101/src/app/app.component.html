@@ -7,17 +7,22 @@
         <div class="search-form">
             <input type="string" class="round" placeholder="(Zip code)" [(ngModel)]="searchText" (change)="storeLocation()">
         </div>
-        <button mat-icon-button [mat-menu-trigger-for]="menu">
-            <mat-icon class="right-selection-item">menu</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item [routerLink]="['/dashboard']">Dashboard</button>
-            <button mat-menu-item [routerLink]="['/alerts']">Alerts</button>
-            <button mat-menu-item [routerLink]="['/daily']">Today</button>
-            <button mat-menu-item [routerLink]="['/hourly']">Hourly</button>
-            <button mat-menu-item [routerLink]="['/weekly']">Weekly</button>
-            <button mat-menu-item [routerLink]="['/monthly']">Monthly</button>
-        </mat-menu>
+        <div class="right-selection-item">
+            <button mat-icon-button (click)="openAlerts()">
+                <mat-icon>notifications</mat-icon>
+            </button>
+            <button mat-icon-button [mat-menu-trigger-for]="menu">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item [routerLink]="['/dashboard']">Dashboard</button>
+                <button mat-menu-item [routerLink]="['/alerts']">Alerts</button>
+                <button mat-menu-item [routerLink]="['/daily']">Today</button>
+                <button mat-menu-item [routerLink]="['/hourly']">Hourly</button>
+                <button mat-menu-item [routerLink]="['/weekly']">Weekly</button>
+                <button mat-menu-item [routerLink]="['/monthly']">Monthly</button>
+            </mat-menu>
+        </div>
     </mat-toolbar-row>
     <mat-toolbar-row class="title-selection fira-code title-coloring">
         <nav class="title-selection-item" mat-tab-nav-bar [tabPanel]="tabPanel">

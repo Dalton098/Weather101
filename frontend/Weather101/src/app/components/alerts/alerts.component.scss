@@ -1,0 +1,30 @@
+.aligned-with-icon{
+    position: absolute;
+    top: 8px;
+    left: 50px;
+    margin-top: 5px;
+    margin-left: 5px; /* optional */
+}
+
+.icon-display {
+    position: relative;
+    top: 15px;
+    left: 15px;
+    transform: scale(2);
+}
+
+h1 {
+    font-size: 64px;
+}
+
+.severe {
+    color: red;
+}
+
+.minor {
+    color: green;
+}
+
+.moderate {
+    color: orange;
+}
