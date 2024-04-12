@@ -10,6 +10,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { of } from 'rxjs';
 import * as hourlySauce from "./sampleData/hourlyWeatherData.json";
 import * as twelveHourSauce from "./sampleData/twelveHourWeatherData.json";
+import * as alertSauce from "./sampleData/alertData.json";
 import { WeatherService } from './services/weather.service';
 
 export default function weatherServiceSpy() {
@@ -21,7 +22,8 @@ export default function weatherServiceSpy() {
       "latLonHourlyWeatherForcast",
       "getStoredLocation",
       "fetchLocation",
-      "setOfficeLocation"
+      "setOfficeLocation",
+      "activeAlerts"
     ],
     { zipCodeEventEmitter: {subscribe: subscribeSpy }});
   
@@ -30,6 +32,7 @@ export default function weatherServiceSpy() {
   weatherServiceSpy.latLon12HourWeatherForcast.and.returnValue(of(twelveHourSauce));
   weatherServiceSpy.getStoredLocation.and.returnValue(of(tempLocation));
   weatherServiceSpy.fetchLocation.and.returnValue(of(tempLocation));
+  weatherServiceSpy.activeAlerts.and.returnValue(of(alertSauce));
   weatherServiceSpy.setOfficeLocation.and.callThrough();
   return weatherServiceSpy;
 }

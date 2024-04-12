@@ -102,7 +102,7 @@ export class WeatherService {
 
   getStoredLocation() : Location {
     const location = localStorage.getItem('location')
-    return location ? JSON.parse(location) : {"zip":"19355","latitude":40.0468,"longitude":-75.531,"city":"Malvern","state":"PA","country":"US"};
+    return location ? JSON.parse(location) : {"zip":"19355","latitude":40,"longitude":75,"city":"Malvern","state":"PA","country":"US"};
   }
 
   setStoredLocation(location: Location) : void {

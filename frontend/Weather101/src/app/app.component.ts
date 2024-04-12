@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { WeatherService } from './services/weather.service';
-import { Location } from './common/Location';
+import { MatDialog } from '@angular/material/dialog';
+import { AlertsComponent } from './components/alerts/alerts.component';
 
 @Component({
   selector: 'app-root',
@@ -19,16 +20,26 @@ export class AppComponent {
     { link: '/monthly', label: 'Monthly'}
   ];
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService,
+              private dialog: MatDialog) {
     this.searchText = this.weatherService.getStoredLocation().zip;
   }
 
   activeAlerts() {
-    this.weatherService.activeAlerts(this.weatherService.getStoredLocation()).subscribe(data => console.log(data));
+    this.weatherService.activeAlerts(this.weatherService.getStoredLocation()).subscribe(data => {
+      console.log(data);
+    });
   }
 
   setCurrentRoute(route: string) {
     this.currentRoute = route;
+  }
+
+  openAlerts() {
+    this.dialog.open(AlertsComponent, {
+      height: '500px',
+      width: '1000px'
+    });
   }
 
   async storeLocation() {
