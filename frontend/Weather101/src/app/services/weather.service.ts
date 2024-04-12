@@ -38,8 +38,9 @@ export class WeatherService {
   latLon12HourWeatherForcast(lat: number, lon: number) : Observable<any> {
     lat = Math.abs(Number.parseInt(`${lat}`));
     lon = Math.abs(Number.parseInt(`${lon}`));
+    const office = this.getStoredLocation().office || { office: 'TOP', x: 45, y: 77};
     return this._getDataFromApiOrCache(
-      `${this.baseWeatherUrl}/gridpoints/TOP/${lat},${lon}/forecast`,
+      `${this.baseWeatherUrl}/gridpoints/${office.office}/${office.x},${office.y}/forecast`,
       lat, lon, WeatherService.TWELVE_HOUR_KEY
     );
   }
@@ -52,8 +53,9 @@ export class WeatherService {
    * @returns hourly forecast data
    */
   latLonHourlyWeatherForcast(lat: number, lon: number) : Observable<any> {
+    const office = this.getStoredLocation().office || { office: 'TOP', x: 45, y: 77};
     return this._getDataFromApiOrCache(
-      `${this.baseWeatherUrl}/gridpoints/TOP/${lat},${lon}/forecast/hourly`,
+      `${this.baseWeatherUrl}/gridpoints/${office.office}/${office.x},${office.y}/forecast/hourly`,
       lat, lon, WeatherService.HOURLY_KEY
       );
   }
@@ -105,7 +107,7 @@ export class WeatherService {
     return location ? JSON.parse(location) : {"zip":"19355","latitude":40,"longitude":75,"city":"Malvern","state":"PA","country":"US"};
   }
 
-  setStoredLocation(location: Location) : void {
+  async setStoredLocation(location: Location) : Promise<void> {
     localStorage.setItem('location', JSON.stringify(location));
     this.zipCodeEventEmitter.emit(location);
   }
