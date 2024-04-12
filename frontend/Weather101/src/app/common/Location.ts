@@ -7,5 +7,6 @@ export interface Location {
     longitude: number,
     city: string,
     state: string,
-    country: string
+    country: string,
+    office?: { office: string, x: number, y: number } | undefined
 }

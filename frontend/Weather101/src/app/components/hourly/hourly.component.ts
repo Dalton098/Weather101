@@ -24,9 +24,10 @@ export class HourlyComponent implements AfterViewInit {
   {
   }
 
-  renderPage(location: Location) {
-    this.weatherService.latLonHourlyWeatherForcast(location.latitude, location.longitude).subscribe(forecast => 
+  async renderPage(location: Location) {
+    this.weatherService.latLonHourlyWeatherForcast(location.latitude, location.longitude).subscribe(async forecast => 
       {
+        const office = 
         this.weatherService.setOfficeLocation("TOP", location.latitude, location.longitude, WeatherService.HOURLY_KEY, forecast);
         this.city = location.city;
         this.state = location.state;
