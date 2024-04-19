@@ -98,6 +98,11 @@
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
+
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 20px;
+}
+
 .cal-month-view .cal-event {
   width: 10px;
   height: 10px;

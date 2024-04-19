@@ -102,11 +102,19 @@ export class WeatherService {
     return location;
   }
 
+  /**
+   * Method for handling stored location
+   * @returns The stored location or the default location for 19355
+   */
   getStoredLocation() : Location {
     const location = localStorage.getItem('location')
     return location ? JSON.parse(location) : {"zip":"19355","latitude":40,"longitude":75,"city":"Malvern","state":"PA","country":"US"};
   }
 
+  /**
+   * Setter for the stored location. Used when the user searches for a location
+   * @param location The location to set the stored location to
+   */
   async setStoredLocation(location: Location) : Promise<void> {
     localStorage.setItem('location', JSON.stringify(location));
     this.zipCodeEventEmitter.emit(location);
