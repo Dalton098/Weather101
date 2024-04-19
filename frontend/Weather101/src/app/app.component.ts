@@ -37,7 +37,7 @@ export class AppComponent {
 
   openAlerts() {
     this.dialog.open(AlertsComponent, {
-      height: '500px',
+      height: '800px',
       width: '1000px'
     });
   }
